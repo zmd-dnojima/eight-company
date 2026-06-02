@@ -25,8 +25,8 @@ jobs:
       run: npm run build
       env:
         NODE_ENV: production
-        GATSBY_MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
-        GATSBY_MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_ENV_DOMAIN }}
+        MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
+        MICROCMS_SERVICE_ID: ${{ secrets.MICROCMS_SERVICE_ID }}
 
     - name: Sync files to Onamae.com
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
