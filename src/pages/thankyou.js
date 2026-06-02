@@ -9,7 +9,7 @@ import * as style from "../styles/common.module.scss"
 const Thankyou = () => {
     return(
         <Layout>
-            <Seo title="お問い合わせ完了" description="外壁洗浄専門店エイト | お問い合わせ完了" />
+            <Seo title="お問い合わせ完了" description="株式会社エイトカンパニー | お問い合わせ完了" />
             <div className={style.main}>
             <div className={style.subHeader}>
                 <p>お問い合わせありがとうございます</p>

@@ -27,7 +27,13 @@ jobs:
         NODE_ENV: production
         MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
         MICROCMS_SERVICE_ID: ${{ secrets.MICROCMS_SERVICE_ID }}
-        GATSBY_AVOID_WEBPACK_CACHE: true
+    - name: Rename _gatsby folder for Onamae.com
+      run: |
+        if [ -d "public/_gatsby" ]; then
+          mv public/_gatsby public/assets-gatsby
+          find public -type f \( -name "*.html" -o -name "*.js" -o -name "*.json" \) -exec sed -i 's/\/_gatsby\//\/assets-gatsby\//g' {} +
+          echo "Successfully renamed _gatsby to assets-gatsby"
+        fi
 
     - name: Sync files to Onamae.com
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
