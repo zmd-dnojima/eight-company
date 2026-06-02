@@ -48,8 +48,8 @@ jobs:
           find public -type f \( -name "*.html" -o -name "*.js" -o -name "*.json" \) -exec sed -i 's/\/404\//\/page-404\//g' {} +
         fi
 
-    - name: Sync files to Onamae.com
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+    - name: SFTP Deploy
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
@@ -57,4 +57,6 @@ jobs:
         local-dir: ./public/
         server-dir: /public_html/eight-company.com/test/
         state-name: .ftp-deploy-sync-state.json
-        port: 21
+        port: 8022
+        ssh_private_key: ${{ secrets.SFTP_SSH_KEY }} # 先ほど登録した秘密鍵
+        delete_remote_files: false
