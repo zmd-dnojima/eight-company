@@ -9,6 +9,7 @@ require("dotenv").config({
 })
 
 module.exports = {
+  trailingSlash: "never", // 👈 これを追記（フォルダ化を禁止する魔法のオプションです）
   siteMetadata: {
     defaultTitle: `株式会社エイトカンパニー`,
     defaultDescription: `山梨県の外構・エクステリア工事を承っている専門会社です`,

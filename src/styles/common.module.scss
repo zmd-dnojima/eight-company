@@ -166,18 +166,19 @@
     .contentWrap {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         text-align: center;
         max-width: 1280px;
         margin: 0 auto;
         padding: 0 2rem;
+        @media(max-width: $break-m){ padding: 0 0.2rem; }
         height: 72px;
         gap: 1rem;
     }
     .logo a {
         display: flex;
-  align-items: center;
-  padding: 12px 0;
+        align-items: center;
+        padding: 12px 0;
     }
     .logoMark {
         width: 100%;
@@ -318,10 +319,12 @@
     // SNSボタン群
     .drawerSns {
         display: flex;
-        gap: 8px;
-        margin: 4rem 0;
-        max-width: 300px;
         align-items: center;
+        gap: 8px;
+        margin: 4rem auto;
+        width: 100%;
+        max-width: 300px;
+        
     }
  
     .drawerSnsBtn {
