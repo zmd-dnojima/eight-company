@@ -57,7 +57,6 @@ const Footer = ({ isShortMode }) => {
             <div className={style.contentWrap}>
                 <div className={style.logo}><img src={logo} alt="javascript" /></div>
                 <div className={style.infoT}>
-                    <div className={style.logoTitle}>外壁洗浄専門店 エイト</div>
                     <div>〒400-0104<br/>山梨県甲斐市龍地556-1</div>
                     <div>TEL : 0551-30-9062<br/>FAX : 0551-30-9063<br/>Phone : 070-3815-0008<br/>受付時間 : 08:30-17:30</div>
                 </div>

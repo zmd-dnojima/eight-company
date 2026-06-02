@@ -56,3 +56,5 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./public/
         server-dir: /public_html/eight-company.com/test/
+        state-name: .ftp-deploy-sync-state.json
+        port: 21

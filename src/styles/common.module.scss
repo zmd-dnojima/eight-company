@@ -166,7 +166,8 @@
     .contentWrap {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        text-align: center;
         max-width: 1280px;
         margin: 0 auto;
         padding: 0 2rem;
@@ -305,8 +306,46 @@
     width: 100%;
     margin: 0 auto;
     text-align: center;
-    img {
-        width: 200px;
+
+    .logo {
+        margin-top: 4rem;
+    }
+    .logo img {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    // SNSボタン群
+    .drawerSns {
+        display: flex;
+        gap: 8px;
+        margin: 4rem 0;
+        max-width: 300px;
+        align-items: center;
+    }
+ 
+    .drawerSnsBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        flex: 1;
+        height: 40px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.15s;
+        
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+    
+    .snsLine,
+    .snsInsta {
+        border: 1px solid #333;
+        color: #333;
     }
 
     .infoT {
