@@ -55,7 +55,7 @@ jobs:
         server: 'www215.onamae.ne.jp'
         password: ${{ secrets.FTP_PASSWORD }}
         port: 8022
-        ssh_private_key: ${{ secrets.SFTP_SSH_KEY }}
         local_path: './public/'
         remote_path: '/public_html/eight-company.com/test/'
         delete_remote_files: false
+        sftp_only: true
