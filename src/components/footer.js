@@ -9,7 +9,8 @@ import logo from '../images/logo.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown,faChevronRight,faMinus,faPhone } from "@fortawesome/free-solid-svg-icons"
 import { faEnvelope,faUser } from "@fortawesome/free-regular-svg-icons"
-import { faLine } from "@fortawesome/free-brands-svg-icons"
+
+import { faLine,faInstagram } from "@fortawesome/free-brands-svg-icons"
 
 import bnr from "../images/bnr.png";
 
@@ -59,6 +60,28 @@ const Footer = ({ isShortMode }) => {
                     <div className={style.logoTitle}>外壁洗浄専門店 エイト</div>
                     <div>〒400-0104<br/>山梨県甲斐市龍地556-1</div>
                     <div>TEL : 0551-30-9062<br/>FAX : 0551-30-9063<br/>Phone : 070-3815-0008<br/>受付時間 : 08:30-17:30</div>
+                </div>
+                <div className={style.drawerSns}>
+                    <a
+                    href="https://lin.ee/hcoA4qn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${style.drawerSnsBtn} ${style.snsLine}`}
+                    aria-label="LINE"
+                    >
+                    <FontAwesomeIcon icon={faLine} />
+                    <span>LINE</span>
+                    </a>
+                    <a
+                    href="https://www.instagram.com/eight.company8?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${style.drawerSnsBtn} ${style.snsInsta}`}
+                    aria-label="Instagram"
+                    >
+                    <FontAwesomeIcon icon={faInstagram} />
+                    <span>Instagram</span>
+                    </a>
                 </div>
             </div> 
             <div className={style.copyright}>©{new Date().getFullYear()} 株式会社エイトカンパニー All Rights Reserved.</div>

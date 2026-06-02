@@ -42,6 +42,11 @@ jobs:
           find public -type f \( -name "*.html" -o -name "*.js" -o -name "*.json" \) -exec sed -i 's/\/~partytown\//\/partytown\//g' {} +
           echo "Successfully renamed ~partytown to partytown"
         fi
+        # 3. 404 フォルダの対策（上の階層との競合を完全に回避します）
+        if [ -d "public/404" ]; then
+          mv public/404 public/page-404
+          find public -type f \( -name "*.html" -o -name "*.js" -o -name "*.json" \) -exec sed -i 's/\/404\//\/page-404\//g' {} +
+        fi
 
     - name: Sync files to Onamae.com
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4

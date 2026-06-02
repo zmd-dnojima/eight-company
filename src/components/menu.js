@@ -38,7 +38,6 @@ const Menu = () => {
  
         <div className={`${style.menuInner} ${active ? style.menuShow : ''}`}>
   
-          {/* ナビリンク */}
           <nav className={style.drawerNav}>
             {NAV_LINKS.map(({ label, to }) => (
               <Link
@@ -52,46 +51,45 @@ const Menu = () => {
             ))}
           </nav>
  
-        {/* お問い合わせ・SNS */}
-        <div className={style.drawerBottom}>
-          <Link
-            to="/contact"
-            onClick={classToggle}
-            className={`${style.drawerContactBtn} ${
-              location.pathname === "/contact" || location.pathname === "/contact/"
-                ? style.selected : ""
-            }`}
-          >
-            <FontAwesomeIcon icon={faEnvelope} />
-            <span>お問い合わせ</span>
-          </Link>
- 
-          <div className={style.drawerSns}>
-            <a
-              href="https://lin.ee/hcoA4qn"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${style.drawerSnsBtn} ${style.snsLine}`}
-              aria-label="LINE"
+          <div className={style.drawerBottom}>
+            <Link
+              to="/contact"
+              onClick={classToggle}
+              className={`${style.drawerContactBtn} ${
+                location.pathname === "/contact" || location.pathname === "/contact/"
+                  ? style.selected : ""
+              }`}
             >
-              <FontAwesomeIcon icon={faLine} />
-              <span>LINE</span>
-            </a>
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${style.drawerSnsBtn} ${style.snsInsta}`}
-              aria-label="Instagram"
-            >
-              <FontAwesomeIcon icon={faInstagram} />
-              <span>Instagram</span>
-            </a>
+              <FontAwesomeIcon icon={faEnvelope} />
+              <span>お問い合わせ</span>
+            </Link>
+  
+            <div className={style.drawerSns}>
+              <a
+                href="https://lin.ee/hcoA4qn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${style.drawerSnsBtn} ${style.snsLine}`}
+                aria-label="LINE"
+              >
+                <FontAwesomeIcon icon={faLine} />
+                <span>LINE</span>
+              </a>
+              <a
+                href="https://www.instagram.com/eight.company8?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${style.drawerSnsBtn} ${style.snsInsta}`}
+                aria-label="Instagram"
+              >
+                <FontAwesomeIcon icon={faInstagram} />
+                <span>Instagram</span>
+              </a>
+            </div>
           </div>
-        </div>
  
-      </div>
-    </menu>
+        </div>
+      </menu>
     )
 }
 
