@@ -63,7 +63,7 @@ const Index = (props) => {
                 </section>
 
 
-                {false && (
+                
                 <section className={style.news}>
                     <div className={style.contentWrap}>
                     <div className={style.subTitle}>
@@ -106,7 +106,7 @@ const Index = (props) => {
                     </div>
                     
                 </div></section>
-                )}
+                
 
 
 
