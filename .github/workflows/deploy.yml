@@ -37,4 +37,4 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./public/ # Gatsbyが書き出した公開用フォルダ
-        server-dir: /public_html/eight-company.com/test/ # 👈ここをお名前.comの実際の公開フォルダのパスに書き換えてください！
+        server-dir: /public_html/eight-company.com/_test/ # 👈ここをお名前.comの実際の公開フォルダのパスに書き換えてください！
