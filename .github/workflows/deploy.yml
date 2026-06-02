@@ -27,7 +27,7 @@ jobs:
         NODE_ENV: production
         MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
         MICROCMS_SERVICE_ID: ${{ secrets.MICROCMS_SERVICE_ID }}
-        
+
     - name: Rename system folders for Onamae.com
       run: |
         # 1. _gatsby の対策
@@ -51,8 +51,8 @@ jobs:
     - name: SFTP Deploy
       uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
+        username: 'r9558851'
+        server: 'www215.onamae.ne.jp'
         password: ${{ secrets.FTP_PASSWORD }}
         port: 8022
         ssh_private_key: ${{ secrets.SFTP_SSH_KEY }}
