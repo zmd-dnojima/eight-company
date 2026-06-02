@@ -1,0 +1,471 @@
+@import './variables.scss';
+@import './all.scss';
+@import './common.module.scss';
+
+////////////////////////////////////////////////
+// 共通
+
+
+
+.subVisual {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1200 / 300; 
+    @media (max-width: $break-s) {
+      aspect-ratio: 1200 / 700; 
+    }
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/service/hero.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    .txtWrap {
+        height: 100%;
+        width: 100%;
+        padding: 2rem;
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        .txtArea {
+            
+            color: #fff;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-shadow: 0 0 6px rgb(0, 0, 0, 0.6);
+            line-height: 1rem;
+            span {
+              display: block;
+              font-size: 14px;
+            }
+        }
+    }
+}
+
+////////////////////////////////////////////////
+/// 
+.serviceSection {
+  padding: 80px 20px;
+  background-color: #fff;
+  background-image:
+  linear-gradient(rgba(243, 243, 243, 0.5) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(243, 243, 243, 0.5) 1px, transparent 1px);
+  background-size: 32px 32px;
+
+  .serviceTitle {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 4rem;
+    font-size: 20px;
+    span {
+      display: block;
+      font-size: 14px;
+      font-family: $enFont;
+      color: $base-color;
+    }
+    
+  }
+
+  // 中央寄せコンテナ
+.servicePointContainer {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+// リストを包むラッパー（各行の縦の間隔を設定）
+.serviceGridList {
+  display: flex;
+  flex-direction: column;
+  gap: 60px; // 行と行の間のすき間
+  margin-bottom: 80px; // 下のお問い合わせエリアとのすき間
+
+  @media (max-width: $break-s) {
+    gap: 45px;
+    margin-bottom: 50px;
+  }
+}
+
+// 1行（写真＋テキスト）の並びとPC用レイアウト
+.serviceRow {
+  display: flex;
+  align-items: flex-start; // テキストが長くても上揃えで綺麗に見せる
+  gap: 40px; // 写真と右側テキストのすき間
+
+  // 【SP対応】スマホでは写真を上、テキストを下に
+  @media (max-width: $break-s) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+// 左側：写真設定
+.serviceImageZone {
+  width: 35%; // PC時は全体の35%の幅に固定
+  max-width: 320px;
+  width: 100%;
+
+  @media (max-width: $break-s) {
+    width: 100%;
+    max-width: 1000px; // スマホでは横幅いっぱいに広げる
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); // 軽い影をつけて写真を綺麗に見せる
+  }
+}
+
+// 右側：テキスト設定
+.serviceTextZone {
+  flex: 1; // 残りの横幅をすべて使う
+  text-align: left;
+}
+
+// 青い線の入ったタイトル
+.serviceItemTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1a2574; // ネイビー
+  position: relative;
+  padding-left: 20px; // 線の分の余白
+  margin-bottom: 14px;
+  line-height: 1.4;
+
+  // タイトルの左側にある細い青い線の擬似要素
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    width: 4px; // 線の太さ
+    height: 1em; // 線の高さ（文字の高さに合わせる）
+    background-color: #1a2574; // 線の色
+  }
+
+  @media (max-width: $break-s) {
+    font-size: 16px;
+    padding-left: 16px;
+  }
+}
+
+// 各説明文
+.serviceItemDesc {
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+  // 下部のお問い合わせ誘導エリア
+  .serviceBottomLead {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 40px;
+  }
+
+  .leadText {
+    font-size: 15px;
+    color: #333333;
+    font-weight: bold;
+  }
+
+  // 丸角のお問い合わせボタン
+  .leadButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #2ea7e0 0%, #35518f 100%);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 14px 40px;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(26, 37, 116, 0.2);
+    transition: background-color 0.2s, transform 0.2s;
+
+    &:hover {
+      background-color: #2433a3;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: $break-xs) {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  .leadIcon {
+    font-size: 14px;
+  }
+
+  
+}
+
+
+
+// 対応エリアセクション全体（画像の背景色に合わせた薄いグレー）
+.areaSection {
+  width: 100%;
+  background-color: #f4f4f4; // 画像に合わせた淡いグレー背景
+  padding: 80px 20px;
+  box-sizing: border-box;
+
+  @media (max-width: $break-s) {
+    padding: 50px 15px;
+  }
+}
+
+// 2カラムを制御する中央寄せコンテナ
+.areaContainer {
+  display: flex;
+  align-items: center; // 上下中央揃え
+  gap: 50px; // 左テキストと右地図のすき間
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  // 【SP対応】スマホでは縦並び
+  @media (max-width: $break-s) {
+    flex-direction: column;
+    align-items: flex-start; // 左揃えに統一
+    gap: 30px;
+  }
+}
+
+// 左側：テキストエリア
+.areaTextZone {
+  flex: 1.2; // テキストエリアを少しだけ広めに確保
+  text-align: left;
+}
+
+// 英語のサブタイトル（AREA）
+.areaSubTitle {
+  font-size: 14px;
+  font-weight: bold;
+  color: #1a2574; // ネイビー
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+// メインタイトル（対応エリアについて）
+.areaMainTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 40px;
+
+  @media (max-width: $break-s) {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+}
+
+// リード文（山梨県全域に対応〜）
+.areaLead {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20px;
+
+  @media (max-width: $break-s) {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+}
+
+// 自治体リストの段落
+.areaText {
+  font-size: 15px;
+  color: #555555;
+  line-height: 1.8; // ゆったりとした行間で読みやすく
+  margin: 0;
+  letter-spacing: 0.02em;
+
+  @media (max-width: $break-s) {
+    font-size: 14px;
+  }
+}
+
+// 右側：地図イラストエリア
+.areaImageZone {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    max-width: 480px; // 地図が大きくなりすぎないように制限
+    height: auto;
+    display: block;
+  }
+}
+
+
+.flowSection {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 80px 20px;
+  box-sizing: border-box;
+
+  @media (max-width: $break-s) {
+    padding: 50px 15px;
+  }
+}
+
+// 中央寄せコンテナ
+.flowContainer {
+  width: 100%;
+  max-width: 850px; // タイムラインが細長く綺麗に見える幅
+  margin: 0 auto;
+  text-align: center;
+}
+
+// 英語サブタイトル
+.flowSubTitle {
+  font-size: 13px;
+  font-weight: bold;
+  color: #1a2574;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+// メインタイトル
+.flowMainTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 50px;
+
+  @media (max-width: $break-s) {
+    font-size: 20px;
+    margin-bottom: 35px;
+  }
+}
+
+// タイムラインを包むエリア
+.flowTimeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// 白いカード型ボックス本体
+.flowCard {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 30px 40px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); // 柔らかい影
+  text-align: left;
+
+  @media (max-width: $break-s) {
+    padding: 24px 20px;
+  }
+}
+
+// カードの中身のレイアウト
+.flowCardInner {
+  display: flex;
+  align-items: center; // 上下中央揃え
+  gap: 30px;
+
+  @media (max-width: $break-s) {
+    flex-direction: column;
+    // align-items: flex-start; // スマホ時は左揃え
+    gap: 16px;
+  }
+}
+
+// 左側：丸型アイコンゾーン
+.flowIconZone {
+  flex-shrink: 0; // 縮まないように固定
+}
+
+// 画像の紺色の丸アイコンをCSSでプレースホルダー化
+.flowIconPlaceholder {
+  display: block;
+  width: 64px;
+  height: 64px;
+  background-color: #1a2574; // ネイビー
+  border-radius: 50%; // 正円
+  // ※実際の画像やSVGアイコンを表示する場合は、この中に img などを配置してください
+}
+
+// 右側：テキスト
+.flowTextZone {
+  flex: 1;
+  
+}
+
+// ステップのヘッダー（STEP X ＋ タイトル）
+.flowStepHeader {
+  margin: 0 0 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  @media (max-width: $break-s) {
+    justify-content: center;
+  }
+  
+  gap: 16px;
+  line-height: 1.3;
+}
+
+// STEP 1 などの文字
+.flowStepNum {
+  font-size: 15px;
+  font-weight: bold;
+  color: #1a2574;
+  letter-spacing: 0.05em;
+}
+
+// ヒアリング などのタイトル
+.flowStepTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1a2574;
+
+  @media (max-width: $break-s) {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+// 説明文
+.flowStepDesc {
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.6;
+  margin: 0;
+
+  @media (max-width: $break-s) {
+    font-size: 13.5px;
+    text-align: center;
+  }
+}
+
+// ステップの間の下矢印エリア
+.flowArrowZone {
+  margin: 16px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// 矢印アイコン本体
+.flowArrowIcon {
+  font-size: 16px;
+  color: #1a2574; // 線に合わせてネイビーに
+}

@@ -1,0 +1,101 @@
+@import './variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+html {
+    overflow-x: hidden;
+    overflow-y: scroll; -webkit-overflow-scrolling: touch;
+}
+
+:global(html) {
+  scroll-behavior: auto !important;
+}
+
+body {
+    font-family: $baseFont;
+    
+    font-size: 1rem;
+    line-height: 1.8rem;
+    background-color: $bg-color;
+    letter-spacing: 0.06rem;
+    font-display: swap;
+    color: $txt-color;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow:clip;
+
+    
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 500;
+    margin: 0;
+    line-height: 2rem;
+}
+
+p {
+    margin: 1rem 0;
+}
+
+
+h3 {
+    font-size: rem(20);
+}
+
+
+
+ol {
+    padding-inline-start: 10px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none!important;
+}
+
+a:visited {
+    color: inherit;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+  
+.brsp,
+.sp {display: none; }
+.brpc,
+.pc {display: block; }
+@media(max-width: $break-s) { 
+    .brsp,
+    .sp {display: block; }
+    .brpc,
+    .pc {display: none; }
+}
+
+
+
+.off {
+    opacity:.2;
+    pointer-events:none;/*リンクを非リンクに変える*/
+    cursor:default;/*マウスカーソルを矢印のまま変えない*/
+}
+
+.gatsby-image-wrapper {
+    position: relative;
+    overflow: visible;
+}
+
+.cap {
+    font-size: rem(10);
+    color: #666;
+}

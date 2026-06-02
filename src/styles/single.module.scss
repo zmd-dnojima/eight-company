@@ -1,0 +1,223 @@
+@import './variables.scss';
+@import './all.scss';
+@import './common.module.scss';
+
+////////////////////////////////////////////////
+// 共通
+
+
+
+.subVisual {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1200 / 300; 
+    @media (max-width: $break-s) {
+      aspect-ratio: 1200 / 700; 
+    }
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/aboutus/hero.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    .txtWrap {
+        height: 100%;
+        width: 100%;
+        padding: 2rem;
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        .txtArea {
+            
+            color: #fff;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-shadow: 0 0 6px rgb(0, 0, 0, 0.6);
+            line-height: 1rem;
+            span {
+              display: block;
+              font-size: 14px;
+            }
+        }
+    }
+}
+
+////////////////////////////////////////////////
+// 共通
+
+
+// 代表挨拶セクション全体の背景や余白
+.greetingSection {
+  width: 100%;
+  background-color: #ffffff; // 背景はすっきり白
+  padding: 4rem 1.4rem;
+  box-sizing: border-box;
+
+}
+
+// 2カラムを制御するコンテナ
+.greetingContainer {
+  display: flex;
+  align-items: flex-start; // 上揃え
+  gap: 50px; // 写真とテキストの間のすき間
+  width: 100%;
+  max-width: 1000px; // 全体の最大幅
+  margin: 0 auto; // 中央寄せ
+
+  @media (max-width: $break-s) {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+}
+
+// 左側：画像エリア
+.greetingImageZone {
+  flex: 1; // PC時は均等、または幅を固定したい場合は width 指定
+  max-width: 450px;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); // ほんのり軽い影
+  }
+}
+
+// 右側：テキストエリア
+.greetingTextZone {
+  flex: 1.2; // 画像より少しだけ幅を広く持たせる
+  text-align: left;
+  box-sizing: border-box;
+}
+
+// 各段落の調整
+.greetingParagraph {
+  font-size: 15px;
+  color: #333333;
+  line-height: 1.8; // 行間をゆったりさせて読みやすく
+  margin-bottom: 24px;
+  letter-spacing: 0.03em;
+
+  // 「デザイナーはお客様〜」の強調フック
+  &:nth-child(2) {
+    font-weight: bold;
+    color: #1a2574; // トーンを合わせたネイビー
+    font-size: 16px;
+    margin: 32px 0;
+  }
+
+  @media (max-width: $break-s) {
+    font-size: 14px;
+    margin-bottom: 20px;
+    
+    &:nth-child(2) {
+      margin: 24px 0;
+    }
+  }
+}
+
+// 署名エリア
+.signatureZone {
+  padding-top: 20px;
+  color: #555555;
+  font-size: 14px;
+}
+
+.overviewSection {
+  padding: 80px 20px;
+  background-color: #fff;
+  background-image:
+  linear-gradient(rgba(243, 243, 243, 0.5) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(243, 243, 243, 0.5) 1px, transparent 1px);
+  background-size: 32px 32px;
+
+  .overviewTitle {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 4rem;
+    font-size: 20px;
+    span {
+      display: block;
+      font-size: 14px;
+      font-family: $enFont;
+      color: $base-color;
+    }
+    
+  }
+
+  .companyContainer {
+    width: 100%;
+    max-width: 900px; // 表が見やすくまとまる最大幅
+    margin: 0 auto;
+  }
+
+  // リスト全体の枠組み
+  .companyList {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  // 各行（1項目ごと）の区切りとPCレイアウト
+  .companyRow {
+    display: flex;
+    align-items: center; // 上下中央揃え（テキストが複数行になった場合は flex-start がおすすめ）
+    padding: 24px 10px;
+    border-bottom: 1px solid #e0e0e0; // 行を区切るグレーの線
+    box-sizing: border-box;
+
+    // 【SP対応】スマホでは各行を縦並び（1カラム）に切り替える
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start; // 左揃え
+      gap: 8px; // 項目と内容のすき間
+      padding: 16px 5px;
+    }
+  }
+
+  // 左側：項目（dt）
+  .companyItem {
+    width: 25%; // PC時の左側の幅を25%に固定
+    font-weight: bold;
+    color: #333333;
+    font-size: 16px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      font-size: 14px;
+      color: #1a2574; // スマホ時に項目が目立つようアクセントカラーにしても綺麗です
+    }
+  }
+
+  // 右側：内容（dd）
+  .companyDetail {
+    width: 75%; // PC時の右側の幅を75%に固定
+    margin: 0;
+    color: #555555;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: right;
+    @media (max-width: 768px) {
+      width: 100%;
+      font-size: 15px;
+    }
+  }
+
+  // Google Mapのリンクボタン
+  .mapLink {
+    display: block; // 改行して配置
+    margin-top: 8px;
+    font-size: 14px;
+    color: #1a2574;
+    text-decoration: underline; // 下線
+    font-weight: bold;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

@@ -1,0 +1,915 @@
+@import './variables.scss';
+@import './all.scss';
+
+
+////////////////////////////////////////////////
+//共通
+////////////////////////////////////////////////
+
+.subHeader {
+    position: relative;
+    width: 100vw;
+    //overflow: hidden;
+    color: #fff;
+    background: url('../images/noise.png'),#12196D;
+    background-repeat: repeat;
+    background-position: center;
+    padding-top: 8rem;
+    padding-bottom: 2rem;
+    @media(max-width: $break-s){ 
+        padding-top: 5rem;
+        padding-bottom: 1rem;
+    }
+    p {
+        text-align: center;
+        z-index: 1;
+        font-size: rem(24);
+        font-weight: 600;
+        line-height: rem(36);
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+}
+
+.contentWrap {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 4rem 1rem 4rem 1rem;
+}
+
+//CVボタン
+.morebutton {
+    position: relative;
+    font-family: $enFont;
+    color: $base-color;
+    font-size: rem(12);
+    letter-spacing: 0.16rem;
+    padding: 2rem 0;
+    a {
+        transition: all 0.3s;
+    }
+    a:hover {
+        opacity: 0.5;
+    }
+    span {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        margin-left: 1rem;
+        background: $base-color;
+        border-radius: 100%;
+        svg {
+            display: block;
+            color: #fff;
+            text-align: center;
+            margin: 0 auto;
+            padding-top: 18px;
+            
+        }
+    }   
+}
+
+//その他ボタン
+.backButton,
+.topButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 180px;
+    height: 60px;
+    border-radius: 0.2rem;
+    border: 1px solid $base-color;
+    color: $base-color;
+}
+
+////////////////////////////////////////////////////////
+//loader
+.loaderWrap {
+    .loaderArea {
+        position: fixed;
+        top: 0;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100%;
+        //background-color: lighten($base-color,40%);
+        background-color: #efc413;
+        transition: all 0.4s ease-in-out;
+        .loaderInner {
+            width: 100%;
+            max-width: 1200px;
+            img {
+                width: 100%;
+                height: auto;
+            }
+            
+        }
+    }
+    .inactive {
+        top: -100vh;
+    }
+}
+
+////////////////////////////////////////////////////////
+//pagetop
+.scrollBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    cursor: pointer;
+    animation: fadeIn .5s ease 0s 1 normal;
+    p {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    p::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        margin-bottom: -6px;
+        border-top: solid 3px $base-color;
+        border-right: solid 3px $base-color;
+        transform: rotate(-45deg);
+    }
+   
+}
+  
+#scrollBtn:hover {
+    opacity: 0.5;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+////////////////////////////////////////////////////////
+// Header
+.headerWrapper {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    z-index: 2;
+    .contentWrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        height: 72px;
+        gap: 1rem;
+    }
+    .logo a {
+        display: flex;
+  align-items: center;
+  padding: 12px 0;
+    }
+    .logoMark {
+        width: 100%;
+        height: 60px;
+}
+    
+
+    .nav {
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        flex: 1;
+        justify-content: center;
+        @media(max-width: $break-m){ display: none; }
+    }
+    
+    .navLink {
+        position: relative;
+        font-size: 14px;
+        color: #444;
+        text-decoration: none;
+        padding-bottom: 4px;
+        white-space: nowrap;
+        transition: color 0.2s;
+        font-weight: 500;
+    }
+    
+    .navLink::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #111;
+        transition: width 0.2s ease;
+    }
+    
+    .navLink:hover {
+        color: #111;
+    }
+    
+    .navLink:hover::after,
+    .navLink.active::after {
+        width: 100%;
+    }
+    
+    .navLink.active {
+        color: #111;
+        font-weight: 600;
+    }
+
+    .hdr_btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 20px;
+        height: 50px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.15s, transform 0.1s;
+        white-space: nowrap;
+    }
+ 
+    .hdr_btn:hover {
+        opacity: 0.85;
+        transform: translateY(-1px);
+    }
+    
+    .hdr_btn:active {
+        transform: translateY(0);
+    }
+
+    /* お問い合わせ */
+    .btn_mail {
+        background: linear-gradient(135deg, #2ea7e0 0%, #35518f 100%);
+        color: #fff;
+        @media(max-width: $break-m){ display: none; }
+    }
+    
+    .btn_mail.selected {
+        background: #0f1e3d;
+    }
+}
+ 
+
+
+ 
+
+ 
+@media (max-width: 1024px) {
+  .nav {
+    gap: 1.2rem;
+  }
+  .navLink {
+    font-size: 13px;
+  }
+}
+ 
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  .contentWrap {
+    padding: 0 1rem;
+  }
+  .hdr_btn span {
+    display: none;
+  }
+  .hdr_btn {
+    padding: 0 12px;
+  }
+}
+
+////////////////////////////////////////////////////////
+// Footer
+.footerWrapper {
+    color: #333;
+    position: relative;
+    
+    background-color:#fff;
+    padding-bottom: 1rem;
+    font-size: 0.8rem;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    img {
+        width: 200px;
+    }
+
+    .infoT {
+        display: inline-block;
+        text-align: left;
+        margin-top: 2rem;
+    }
+    
+    .copyright {
+        color:#333;
+        font-size: 0.8rem;
+        line-height: normal;
+        span {
+            text-decoration: underline;
+        }
+    }
+
+
+    // コンタクトセクション全体の背景
+    .contactSection {
+        width: 100%;
+        aspect-ratio: 1200 / 400; 
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/contact.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        box-sizing: border-box;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    .contactInner {
+        width: 100%;
+        max-width: 800px; // 白いボックスの最大幅に合わせる
+    }
+
+    .contactSub {
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        margin-bottom: 8px;
+    }
+
+    .contactTitle {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.4); // 背景が緑なので文字の視認性アップ
+    }
+
+    .contactDesc {
+    font-size: 14px;
+    margin-bottom: 24px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+
+    // 白いおめかしボックス
+    .contactBox {
+    background-color: #ffffff;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    padding: 4rem 40px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    
+    // スマホ対応：縦並びにする
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 24px;
+        padding: 20px;
+    }
+    }
+
+    // 左側：電話
+    .contactPhoneZone {
+    flex: 1;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    @media (max-width: 768px) {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 24px;
+        width: 100%;
+    }
+    }
+
+    .phoneLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #1a2574; // 画像のような濃いめの紺・ネイビー
+    transition: opacity 0.2s;
+    
+    &:hover {
+        opacity: 0.8;
+    }
+    }
+
+    .phoneIcon {
+    font-size: 24px;
+    margin-right: 12px;
+    }
+
+    .phoneNumber {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    
+    @media (max-width: 480px) {
+        font-size: 22px;
+    }
+    }
+
+    .businessHours {
+    font-size: 13px;
+    color: #666666;
+    
+    margin: 0;
+    }
+
+    // 右側：メールボタン
+    .contactMailZone {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    }
+
+    .mailButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #2ea7e0 0%, #35518f 100%);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 14px 0;
+    width: 80%; // ボックス内でのボタンの幅
+    border-radius: 6px; // 丸角カプセル型
+    box-shadow: 0 4px 10px rgba(26, 37, 116, 0.2);
+    transition: background-color 0.2s, transform 0.2s;
+    
+    &:hover {
+        background-color: #2433a3;
+        transform: translateY(-1px);
+    }
+    
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+    }
+
+    .mailIcon {
+    font-size: 16px;
+    }
+
+    .bannerZone {
+        width: 100%;
+        max-width: 800px; // バナーの元の綺麗に見える最大幅（画像サイズに合わせる）
+        margin: 0 auto;
+        padding: 4rem 20px;
+        box-sizing: border-box;
+    }
+
+    
+    .bannerLink {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 8px; // ほんのり角を丸くして今っぽいデザインに
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); // 軽い影をつけて浮き立たせる
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 2px solid $base-color;
+
+        img {
+            width: 100%;
+            height: auto; // アスペクト比を維持して100%可変
+            display: block;
+        }
+
+        // マウスを乗せたときに少し浮き上がるプロの定番演出
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+    }
+}
+
+
+////////////////////////////////////////////////////////
+//Menu
+.menuWrapper {
+    position: absolute;
+    z-index: 20;
+    display: none;
+    @media(max-width: $break-m){ 
+        display: block;
+    }
+    .menuBtn {
+        position: fixed;
+        top: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 72px;
+        height: 72px;
+        box-sizing: border-box;
+        background: linear-gradient(135deg, #2ea7e0 0%, #35518f 100%);
+        z-index: 20;
+    }
+    .menuBtn::before {
+        position: absolute;
+        top: 38%;
+        left: 25%;
+        display: block;
+        content: "";
+        width: 50%;
+        height: 1px;
+        background: #fff;
+        transform: rotate(0deg);
+        transition: all 0.3s;
+    }
+    
+    .menuBtn::after {
+        position: absolute;
+        bottom: 38%;
+        left: 25%;
+        display: block;
+        content: "";
+        width: 35%;
+        height: 1px;
+        background: #fff;
+        transform: rotate(0deg);
+        transition: all 0.3s;
+        
+    }
+    
+
+    .active {
+        background: #fff;
+    }
+    .active::before {
+        top: calc(50% - 1px);
+        transform: rotate(45deg);
+        background: $base-color;
+        
+    }
+    .active::after {
+        width: 50%;
+        bottom: calc(50% - 1px);
+        transform: rotate(-45deg);
+        background: $base-color;
+        
+    }
+    .menuInner {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background-color: $base-color;
+        top: 0;
+        left: -100vw;
+        transition: all 0.2s;
+        text-align: left;
+        overflow-y: scroll;
+        padding-top: 4rem;
+        padding-bottom: 7rem;
+    }
+    
+    .menuInner.menuShow {   
+        -webkit-transform: translateX(100vw);
+	        transform: translateX(100vw);
+    }
+        
+    // ---- ドロワー内ナビ ----
+    .drawerNav {
+        // display: flex;
+        // flex-direction: column;
+        // padding: 8px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        gap: 8px;
+        padding: 2rem 20px 160px; // drawerBottom分の余白
+    }
+    
+    .drawerNavLink {
+        font-size: 14px;
+        color: #fff;
+        text-decoration: none;
+        padding: 12px 20px;
+        transition: background 0.15s, color 0.15s;
+        
+        &:hover {
+            background: #f7f9fc;
+            color: $base-color;
+        }
+        
+        &.active {
+            color: $active-color;
+            font-weight: 600;
+            background: lighten($active-color, 42%);
+        }
+    }
+        
+    // ---- ドロワー下部（お問い合わせ・SNS） ----
+    .drawerBottom {
+        // padding: 16px 20px;
+        // display: flex;
+        // flex-direction: column;
+        // gap: 12px;
+
+
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 201;
+    }
+        
+    // お問い合わせボタン
+    .drawerContactBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        height: 44px;
+        border-radius: 999px;
+        background: #fff;
+        color: #333;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.15s;
+        
+        &:hover {
+            opacity: 0.85;
+        }
+        
+        &.selected {
+            opacity: 0.7;
+        }
+    }
+        
+    // SNSボタン群
+    .drawerSns {
+        display: flex;
+        gap: 8px;
+    }
+ 
+    .drawerSnsBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        flex: 1;
+        height: 40px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.15s;
+        
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+    
+    .snsLine,
+    .snsInsta {
+        border: 1px solid #fff;
+        color: #fff;
+    }
+}
+
+////////////////////////////////////////////////////////
+//ContactArea
+
+.contactArea {
+    position: relative;
+    width: 100%;
+    padding: 2rem 0;
+    
+    // background-color:rgba(255,255,255,0.8);
+    // background-blend-mode:lighten;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    font-family: "Shippori Mincho", serif;
+    .gridbox {
+        @extend %container;
+        width: 90%;
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 1rem;
+        padding: 2rem 0;
+        justify-items: center;
+        align-items: center;
+        padding: 3rem 0;
+        border-radius: 0.4rem;
+        
+        .contactTxt {
+            color: #fff;
+            .txt_1 {
+                font-size: rem(30);
+                line-height: 60px;
+            }
+            .txt_2 {
+                padding-top: 2rem;
+                font-size: rem(20);
+                line-height: 30px;
+            }
+        }
+
+        .btnbox {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 300px;
+            height: 60px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            color: #fff;
+            font-size: rem(18);
+            letter-spacing: .2rem;
+            
+            
+        }
+        
+    }
+}
+
+
+
+////////////////////////////////////////////////////////
+//お問い合わせ・コンタクトページ
+form {
+    margin: 0 auto;
+    text-align: center;
+    // max-width: 520px;
+    margin-top: 2rem;
+    .tenpu{
+        span {
+            font-size: rem(12);
+            padding-left: 1rem;
+        }
+        input {
+            background: none;
+            border-radius: none;
+            border: none;
+            padding-left: 0em;
+        }
+    }
+}
+form div{
+    padding-top: 14px;
+    padding-bottom: 14px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    label {
+        display: flex;
+        width: 100%;
+        letter-spacing: 0.05em;
+        font-weight: bold;
+        max-width: inherit;
+        align-items: center;
+    }
+    input {
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding-left: 1em;
+        padding-right: 1em;
+        height: 48px;
+        flex: 1;
+        width: 100%;
+        background: #eaedf2;
+        margin-top: 8px;
+        height: 40px;
+        flex: inherit;
+        font-size: 15px;
+    }
+    
+    .required {
+        border-radius: 4px;
+        margin-right: 8px;
+        padding: .1rem 0;
+        width: 48px;
+        display: inline-block;
+        text-align: center;
+        background: $base-color;
+        color: #fff;
+        font-size: rem(12);
+    }
+    textarea {
+        margin-top: 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        height: 216px;
+        flex: 1;
+        width: 100%;
+        background: #eaedf2;
+        font-size: 18px;
+    }
+
+    .contactButton {
+        border-radius: 6px;
+        margin-top: 32px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 280px;
+        display: block;
+        letter-spacing: 0.05em;
+        background: $active-color;
+        color: #fff;
+        font-weight: bold;
+    }
+}
+
+.snsWrapper {
+    position: fixed;
+    bottom: 47px;
+    left: 20px;
+    z-index: 9999;
+    
+    div {
+        float: left;
+        font-size: 1.2rem;
+        background:#fff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: .6rem;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        // box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
+        box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+    }
+    
+}
+
+.blogPageNation {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+    li {
+        float: left;
+        margin-right: 1rem;
+        a {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            border: 1px solid $active-color;
+            border-radius: 40px;
+            color: $active-color;
+            font-size: rem(12);
+        }
+        a[aria-current='page'] {
+            background: $active-color;
+            color: #fff;
+        }
+        
+
+    }
+}
+
+

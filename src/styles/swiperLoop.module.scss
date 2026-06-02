@@ -1,0 +1,20 @@
+@import './variables.scss';
+@import './common.module.scss';
+
+.swiperWrap {
+    position: relative;
+    overflow: hidden;
+    .swiperloop{
+        width:100%;
+        img {
+            width: 100%;
+        }
+        div {
+            transition-timing-function: linear !important;
+        }
+    }
+}
+
+
+
+

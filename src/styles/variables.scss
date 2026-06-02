@@ -1,0 +1,96 @@
+/*==========================================================================
+Break Point
+============================================================================*/
+$break-m: 1024px;
+$break-s: 768px;
+$break-xs: 400px;
+
+/*==========================================================================
+Font
+============================================================================*/
+$baseFont: "Noto Sans JP", sans-serif;
+$enFont: "Roboto", sans-serif;
+
+$baseFontSize: 16;
+@function rem($pixels) {
+    @return calc($pixels / $baseFontSize * 1rem);
+}
+
+/*==========================================================================
+Color
+============================================================================*/
+$base-color: #12196D;
+$active-color: #2ea7e0;
+$bg-color: #fff;
+$txt-color: #333;
+
+
+
+
+
+
+
+/*==========================================================================
+mixin
+============================================================================*/
+@mixin gradient($direction, $color-1, $color-2) {
+    background: linear-gradient($direction, $color-1, $color-2);
+}
+
+@function _get_vw($size, $viewport: 375) {
+    $rate: calc(100 / $viewport);
+    @return $rate * $size * 1vw;
+}
+
+@mixin font-vw($font_size: 10, $viewsize: 375) {
+    font-size: $font_size * 1px;
+    font-size: _get_vw($font_size, $viewsize);
+}
+
+
+@mixin img-vw($img_size, $viewsize: 375) {
+    width: $img_size * 1px;
+    width: _get_vw($img_size, $viewsize);
+}
+
+@mixin with-line-height($line-height) {
+    &::before, &::after {
+        content: "";
+        width: 0;
+        height: 0;
+        display: block;
+    }
+    &::before {
+        margin-top: calc((1 - #{$line-height}) * .5em);
+    }
+    &::after {
+        margin-bottom: calc((1 - #{$line-height}) * .5em);
+    }
+}
+
+@mixin center($direction) {
+	position: absolute;
+	@if $direction==xy {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	@else if $direction==x {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	@else if $direction==y {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+%container {  
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    @media(max-width: $break-s){ 
+        padding: 0 1rem;
+    }
+}

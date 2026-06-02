@@ -1,0 +1,80 @@
+{
+  "name": "eightcompany",
+  "private": true,
+  "description": "eightcompany",
+  "version": "0.1.0",
+  "author": "Daisuke Nojima <nojima.daisuke.web@gmail.com>",
+  "dependencies": {
+    "@contentful/live-preview": "^2.4.1",
+    "@fontsource/noto-sans-jp": "^5.0.3",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.7.1",
+    "@fortawesome/free-regular-svg-icons": "^6.7.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@imgix/gatsby": "^2.1.3",
+    "@u-wave/react-youtube": "^0.7.4",
+    "bootstrap": "^5.3.3",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.3.1",
+    "framer-motion": "^10.12.16",
+    "gatsby": "^5.10.0",
+    "gatsby-plugin-canonical-urls": "^5.11.0",
+    "gatsby-plugin-csp": "^1.1.4",
+    "gatsby-plugin-gatsby-cloud": "^5.10.0",
+    "gatsby-plugin-google-gtag": "^5.11.0",
+    "gatsby-plugin-image": "^3.10.0",
+    "gatsby-plugin-manifest": "^5.10.0",
+    "gatsby-plugin-netlify": "^5.1.0",
+    "gatsby-plugin-offline": "^6.10.0",
+    "gatsby-plugin-react-helmet": "^6.10.0",
+    "gatsby-plugin-robots-txt": "^1.8.0",
+    "gatsby-plugin-sass": "^6.10.0",
+    "gatsby-plugin-sharp": "^5.10.0",
+    "gatsby-plugin-sitemap": "^6.11.0",
+    "gatsby-remark-autolink-headers": "^6.10.0",
+    "gatsby-source-contentful": "^8.10.0",
+    "gatsby-source-filesystem": "^5.10.0",
+    "gatsby-source-microcms": "^3.0.0",
+    "gatsby-transformer-remark": "^6.10.0",
+    "gatsby-transformer-sharp": "^5.10.0",
+    "netlify-lambda": "^2.0.16",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.6",
+    "react-dom": "^18.2.0",
+    "react-google-recaptcha": "^3.1.0",
+    "react-helmet": "^6.1.0",
+    "react-intersection-observer": "^9.4.4",
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^6.12.1",
+    "react-router-hash-link": "^2.4.3",
+    "react-scroll": "^1.8.9",
+    "react-share": "^4.4.1",
+    "sass": "^1.63.3",
+    "swiper": "^9.4.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nonkasvas/zmd"
+  },
+  "bugs": {
+    "url": "https://github.com/nonkasvas/issues"
+  }
+}
