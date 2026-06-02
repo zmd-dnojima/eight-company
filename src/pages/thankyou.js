@@ -8,7 +8,7 @@ import * as style from "../styles/common.module.scss"
 
 const Thankyou = () => {
     return(
-        <Layout>
+        <Layout hideContact={true}>
             <Seo title="お問い合わせ完了" description="株式会社エイトカンパニー | お問い合わせ完了" />
             <div className={style.main}>
             <div className={style.subHeader}>

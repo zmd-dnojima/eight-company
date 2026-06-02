@@ -8,18 +8,12 @@
 
 .subHeader {
     position: relative;
-    width: 100vw;
+    width: 100%;
     //overflow: hidden;
     color: #fff;
-    background: url('../images/noise.png'),#12196D;
-    background-repeat: repeat;
-    background-position: center;
-    padding-top: 8rem;
-    padding-bottom: 2rem;
-    @media(max-width: $break-s){ 
-        padding-top: 5rem;
-        padding-bottom: 1rem;
-    }
+    background: $base-color;
+    padding: 2rem 0;
+    
     p {
         text-align: center;
         z-index: 1;
@@ -79,8 +73,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    width: 180px;
+    margin: 4rem auto;
+    width: 200px;
     height: 60px;
     border-radius: 0.2rem;
     border: 1px solid $base-color;

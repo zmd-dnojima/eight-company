@@ -27,12 +27,20 @@ jobs:
         NODE_ENV: production
         MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
         MICROCMS_SERVICE_ID: ${{ secrets.MICROCMS_SERVICE_ID }}
-    - name: Rename _gatsby folder for Onamae.com
+    - name: Rename system folders for Onamae.com
       run: |
+        # 1. _gatsby の対策
         if [ -d "public/_gatsby" ]; then
           mv public/_gatsby public/assets-gatsby
           find public -type f \( -name "*.html" -o -name "*.js" -o -name "*.json" \) -exec sed -i 's/\/_gatsby\//\/assets-gatsby\//g' {} +
           echo "Successfully renamed _gatsby to assets-gatsby"
+        fi
+        
+        # 2. ~partytown の対策（チルダを通常の「partytown」という名前に変えます）
+        if [ -d "public/~partytown" ]; then
+          mv public/~partytown public/partytown
+          find public -type f \( -name "*.html" -o -name "*.js" -o -name "*.json" \) -exec sed -i 's/\/~partytown\//\/partytown\//g' {} +
+          echo "Successfully renamed ~partytown to partytown"
         fi
 
     - name: Sync files to Onamae.com
