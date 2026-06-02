@@ -9,7 +9,7 @@ import * as style from "../styles/common.module.scss"
 const NAV_LINKS = [
   { label: "私たちについて", to: "/about" },
   { label: "事業内容", to: "/services" },
-  { label: "お知らせ＆施工事例", to: "/works" },
+  { label: "お知らせ＆施工事例", to: "/works", extraClass: style.off },
   { label: "外壁洗浄専門店エイト", to: "/wallwash" },
 ];
 
@@ -39,12 +39,16 @@ const Menu = () => {
         <div className={`${style.menuInner} ${active ? style.menuShow : ''}`}>
   
           <nav className={style.drawerNav}>
-            {NAV_LINKS.map(({ label, to }) => (
+            {NAV_LINKS.map(({ label, to, extraClass }) => (
               <Link
                 key={to}
                 to={to}
                 onClick={classToggle}
-                className={`${style.drawerNavLink} ${location.pathname.startsWith(to) ? style.active : ""}`}
+                className={`
+                            ${style.drawerNavLink} 
+                            ${location.pathname.startsWith(to) ? style.active : ""}
+                            ${extraClass || ""} 
+                          `}
               >
                 {label}
               </Link>

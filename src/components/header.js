@@ -21,7 +21,7 @@ import logo from "../images/logo.svg";
 const NAV_LINKS = [
   { label: "私たちについて", to: "/aboutus" },
   { label: "事業内容", to: "/service" },
-  { label: "お知らせ＆施工事例", to: "/works" },
+  { label: "お知らせ＆施工事例", to: "/works", extraClass: style.off },
   { label: "外壁洗浄専門店エイト", to: "/wallwash" },
 ];
 
@@ -38,11 +38,15 @@ const Header = () => {
         <div className={style.logo}><Link to="/"><img src={logo} alt="株式会社エイトカンパニー ロゴ" className={style.logoMark} /></Link></div>
  
         <nav className={style.nav}>
-          {NAV_LINKS.map(({ label, to }) => (
+          {NAV_LINKS.map(({ label, to, extraClass }) => (
             <Link
               key={to}
               to={to}
-              className={`${style.navLink} ${location.pathname.startsWith(to) ? style.active : ""}`}
+              className={`
+                ${style.navLink} 
+                ${location.pathname.startsWith(to) ? style.active : ""}
+                ${extraClass || ""} 
+              `}
             >
               {label}
             </Link>
