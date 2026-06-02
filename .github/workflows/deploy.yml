@@ -27,6 +27,7 @@ jobs:
         NODE_ENV: production
         MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
         MICROCMS_SERVICE_ID: ${{ secrets.MICROCMS_SERVICE_ID }}
+        
     - name: Rename system folders for Onamae.com
       run: |
         # 1. _gatsby の対策
@@ -47,16 +48,14 @@ jobs:
           mv public/404 public/page-404
           find public -type f \( -name "*.html" -o -name "*.js" -o -name "*.json" \) -exec sed -i 's/\/404\//\/page-404\//g' {} +
         fi
-
     - name: SFTP Deploy
       uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./public/
-        server-dir: /public_html/eight-company.com/test/
-        state-name: .ftp-deploy-sync-state.json
         port: 8022
-        ssh_private_key: ${{ secrets.SFTP_SSH_KEY }} # 先ほど登録した秘密鍵
+        ssh_private_key: ${{ secrets.SFTP_SSH_KEY }}
+        local_path: './public/'
+        remote_path: '/public_html/eight-company.com/test/'
         delete_remote_files: false
