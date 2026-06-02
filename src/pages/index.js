@@ -57,7 +57,6 @@ const Index = (props) => {
 
 
                 <section className={style.mainVisual}>
-                    {/* <StaticImage src="../images/top.jpg" alt="main" placeholder="blurred" quality ={90} /> */}
                     <div className={style.txtWrap}>
                         <div className={style.txtArea}>世代を超えて<br/>家族の笑顔が続く外構に</div>
                     </div>
