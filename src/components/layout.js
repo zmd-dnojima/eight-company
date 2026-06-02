@@ -3,7 +3,6 @@ import Header from "./header"
 import Footer from "./footer"
 import PageTop from "./pagetop"
 import Menu from "./menu"
-import Sns from "./sns"
 
 import "../styles/all.scss"
 
