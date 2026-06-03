@@ -15,6 +15,13 @@ import "swiper/css/navigation"
 import "swiper/css/pagination"
 import "swiper/css/free-mode"
 
+
+//microcmsの日時ずれを解消
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+
 //fontswesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faPhone,faPlus } from "@fortawesome/free-solid-svg-icons"
@@ -25,6 +32,8 @@ import { faLine, faInstagram } from "@fortawesome/free-brands-svg-icons"
 //import Accordion from 'react-bootstrap/Accordion';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Accordion } from 'react-bootstrap';
+
+
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -39,7 +48,9 @@ import person4 from "../images/pw_4.png"
 
 const worryText = "お悩み";
 
-
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault("Asia/Tokyo");
 
 const Index = (props) => {
     const location = useLocation()
@@ -66,43 +77,46 @@ const Index = (props) => {
                 
                 <section className={style.news}>
                     <div className={style.contentWrap}>
-                    <div className={style.subTitle}>
-                        <div className={style.subtitle}><span>NEWS</span><br/>新着情報｜活動報告</div>
-                        <div className={style.morebutton}><Link to="/past/1">VIEW MORE<span><FontAwesomeIcon icon={faChevronRight}/></span></Link></div>
-                    </div>
-                    
-                    <div className={style.gridArea}>
-                        <div className={style.blogArea}>
-                            {/* tagをworks、記事数を4つに絞る */}
-                            {(() => {
-                                const allBlog = [];
-                                const showBlogNum = 4;
-                                var blogAddNum = 0;
-                                
-                                for(var i in props.data.allMicrocmsBlog.edges){
-                                    allBlog.push(props.data.allMicrocmsBlog.edges[i])
-                                    blogAddNum +=1
-                                    if(blogAddNum > showBlogNum){ break }
-                                    singleBlog.push(allBlog[i])
-                                }
-                            })()}             
-                            {
-                                singleBlog.map((novel, index) =>(
-                                    <Link to={`/blog/${novel.node.blogId}`} key={index}>
-                                        <div className={style.blogCard}>                            
-                                            
-                                            <div className={style.blogImgWrapper}><div className={style.blogImgContent}><img src={novel.node.thumbnail.url} alt="card-image" className={style.cardImg} /></div></div>
-                                            <div className={style.blogTags}>{novel.node.tags.name}</div>  
-                                            <div className={style.blogTitle}>{novel.node.title}</div>
-                                            {/* <div className={style.blogDate}><FontAwesomeIcon icon={faClock}/> {`${novel.node.eventDate.substring(0, novel.node.eventDate.indexOf("T"))}`}</div> */}
-                                            <div className={style.blogDate}> {novel.node.date}</div>
-                                            
-                                        </div>
-                                    </Link>
-                                ))
-                            }
-
+                        <div className={style.subTitleWrap}>
+                            <div className={style.subTitle}>
+                                <div className={style.ten}>NEWS</div>
+                                <div className={style.tjp}>お知らせ&施工事例</div>
+                            </div>
+                            
+                            <Link to="/articles/" className={style.moreButton}>
+                                <span>VIEW MORE</span>
+                                <FontAwesomeIcon icon={faChevronRight} className={style.btnIcon} />
+                            </Link>
                         </div>
+                    
+                    <div className={style.blogArea}>
+                        {/* tagをworks、記事数を4つに絞る */}
+                        {(() => {
+                            const allBlog = [];
+                            const showBlogNum = 4;
+                            var blogAddNum = 0;
+                            
+                            for(var i in props.data.allMicrocmsBlog.edges){
+                                allBlog.push(props.data.allMicrocmsBlog.edges[i])
+                                blogAddNum +=1
+                                if(blogAddNum > showBlogNum){ break }
+                                singleBlog.push(allBlog[i])
+                            }
+                        })()}             
+                        {
+                            singleBlog.map((novel, index) =>(
+                                <Link to={`/blog/${novel.node.blogId}`} key={index}>
+                                    <div className={style.blogCard}>                            
+                                        <div className={style.blogImgWrapper}><div className={style.blogImgContent}><img src={novel.node.thumbnail.url} alt="card-image" className={style.cardImg} /></div></div>
+                                        <div className={style.blogDate}> {`${dayjs(novel.node.date).tz().format("YYYY年MM月DD日")}`}</div>
+                                        {/* <div className={style.blogTags}>{novel.node.tags && novel.node.tags.map((tag) => (<span key={tag.id}>{tag.name}</span>))}</div>   */}
+                                        <div className={style.blogTitle}>{novel.node.title}</div>
+                                    </div>
+                                    <div className={style.blogButton}>もっと見る</div>
+                                </Link>
+                            ))
+                        }
+
                     </div>
                     
                 </div></section>
@@ -340,6 +354,7 @@ export const query = graphql`
                     content
                     title
                     tags {
+                        id
                         name
                     }
                     thumbnail {
