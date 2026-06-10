@@ -15,9 +15,14 @@ import "swiper/css/navigation"
 import "swiper/css/pagination"
 import "swiper/css/free-mode"
 
+//bootstrap
+//import Accordion from 'react-bootstrap/Accordion';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Accordion } from 'react-bootstrap';
+
 //fontswesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faPhone,faPlus } from "@fortawesome/free-solid-svg-icons"
+import { faChevronRight, faPhone,faPlus,faChevronDown } from "@fortawesome/free-solid-svg-icons"
 import { faEnvelope,faUser } from "@fortawesome/free-regular-svg-icons"
 import { faLine, faInstagram } from "@fortawesome/free-brands-svg-icons"
 
@@ -28,15 +33,6 @@ import SwiperLoop from "../components/swiperloop"
 import * as style from "../styles/wash.module.scss"  
 
 import logo from '../images/wash/logo.svg'
-import mtitle from '../images/wash/mtitle.svg'
-import tx1 from '../images/wash/tx1.svg'
-import tx2 from '../images/wash/tx2.svg'
-import tx3 from '../images/wash/tx3.svg'
-import tx4 from '../images/wash/tx4.svg'
-import tx5 from '../images/wash/tx5.svg'
-import tx6 from '../images/wash/tx6.svg'
-import tx7 from '../images/wash/tx7.svg'
-import tx8 from '../images/wash/tx8.svg'
 import home1 from '../images/wash/home_1.svg'
 import home2 from '../images/wash/home_2.svg'
 import home3 from '../images/wash/home_3.svg'
@@ -48,6 +44,58 @@ import sbn1 from '../images/wash/sbn1.svg'
 import sbn2 from '../images/wash/sbn2.svg'
 import mvtx1 from '../images/wash/mvtx1.svg'
 import mvtx2 from '../images/wash/mvtx2.svg'
+
+import free from '../images/wash/p3.png'
+import f1 from "../images/wash/flow1.svg"
+import f2 from "../images/wash/flow2.svg"
+import f3 from "../images/wash/flow3.svg"
+import f4 from "../images/wash/flow4.svg"
+
+const faqList = [
+    { q: "対応可能エリアはどこですか？", a: "ご住所が対応可能エリアか、お気軽にお問い合わせください。また出張無料エリア（山梨県甲府市、甲斐市、昭和町、中央市、韮崎市、笛吹市、南アルプス市）ほかは別途交通費がかかります。" },
+    { q: "見積もりは無料ですか？", a: "はい。見積もりごにお断りいただいてもキャンセル料などは発生いたしません。" },
+    { q: "見積もりをお願いしたら必ず契約しないといけないのですか？", a: "お見積もりのご依頼だけでは、必ず契約をしなければならないわけではありません。当社では、お客様と双方が納得してから初めて契約を結びます。ご不明な点がございましたら、何でもご相談ください。" },
+    { q: "見積もり以外に追加料金が発生することはありますか？", a: "当社では、基本的に追加料金を請求することはございません。作業中に仕様変更や新たな工事が必要となった場合は、必ずお客様にご報告し、ご相談の上でご了承をいただいてから作業を進めています。" },
+    { q: "電話やインターネットでの見積もりはできますか？", a: "メール、電話、公式LINEを通じて概算金額をご案内できます。正確なお見積もりは、スタッフが現場にお伺いし、汚れ具合や素材の状況を確認した上でご提供いたします。" },
+    { q: "外壁全面ではなく、一面だけでも大丈夫ですか？", a: "はい、外壁の一部分だけの清掃も承ります。お気軽にお問い合わせください。" },
+    { q: "洗浄作業にはどれくらいの時間がかかりますか？", a: "洗浄範囲によって異なりますが、作業時間はおおよそ1〜6時間程度です。詳しい時間は無料お見積もりでご案内いたしますので、お気軽にご依頼ください。" },
+    { q: "洗浄で汚れはどこまで取れますか？", a: "プロの技術と専用の洗剤、器材を用いて洗浄を行います。ほとんどの汚れは除去できますが、素材に深く入り込んだ汚れや、手の届きにくい箇所の汚れは完全に除去できない場合があります。詳細については、事前のお見積もり時にご説明いたします。" },
+    { q: "外壁洗浄するタイミングはいつですか？", a: "新築から5～8年ほど経つと、外壁に黒や緑の汚れが目立ってきます。この段階では防水性能はまだ保たれており、美観だけが損なわれていることが多いため、外壁塗装前のメンテナンスとして洗浄をおすすめします。" },
+    { q: "外壁以外の洗浄は可能ですか？", a: "はい、土間コンクリート、玄関タイル、ブロック塀、カーポートなどの洗浄が可能です。その他の場所についてもお気軽にご相談ください。" },
+    { q: "換気扇の周りなどの部分的な汚れだけでもいいのですか？", a: "部分的な汚れだけでも対応しております。1㎡から承っておりますのでお気軽にお問合せください。" },
+    { q: "作業時の水道代はどうなりますか？", a: "通常、お客様の水道を使用させていただくことになりますので、水道代についてはご負担いただくようお願いしております。" },
+    { q: "作業中、在宅は必要ですか？", a: "外壁洗浄は屋外での作業となりますので、お客様が在宅である必要はありません。ただし、お客様が不在の場合に作業を行う際には、事前にお客様のご了承を得てから作業を行います。" },
+    { q: "雨の日でも作業はできますか？", a: "雨の日には作業を行うことができますが、天候によっては作業が延期される場合があります。作業が雨で延期になった場合、追加の費用はかかりません。" },
+    { q: "洗浄時、隣家などに水は飛び散るか心配です", a: "念のために近隣の方へ弊社のスタッフが事前に挨拶へお伺いさせていただきます。また、施工に際しては細心の注意を払い、近隣の皆様にご迷惑がかからないよう心がけてまいります。" },
+    { q: "施工中は、洗濯物などはどうしたらいいですか？", a: "洗濯物に関しては、施工中は部屋の中に干していただくようお願いしています。水を使用するため、家の中に水が入らないよう、すべての窓を閉めていただくようお願いいたします。万が一飛散があっては困りますので、しばらくの間、少し息苦しく感じるかもしれませんが、ご協力をお願いいたします。" },
+];
+
+const flowSteps = [
+        {
+            step: "STEP 1",
+            icon:f1,
+            title: "お問い合わせ",
+            desc: "お試し洗浄、お見積もり無料で行います！お写真での診断もございます。まずはお気軽にお問い合わせください。"
+        },
+        {
+            step: "STEP 2",
+            icon:f2,
+            title: "現地調査・お試し施工",
+            desc: "現地にお伺いし、外壁の状況を調査します。1㎡程度でお試し施工を行い、汚れがドコまで落ちるか体験していただけます。"
+        },
+        {
+            step: "STEP 3",
+            title: "見積書発行・ご契約",
+            icon:f3,
+            desc: "お見積内容にご納得いただけましたらご契約後、施工日を確定いたします。"
+        },
+        {
+            step: "STEP 4",
+            title: "施工、完了確認",
+            icon:f4,
+            desc: "施工スタッフがお伺いし、丁寧に施工実施いたします。作業完了後、完了確認をしていただいてご請求となります。作業完了後も万が一問題があれば迅速に対応させていただきますので、ご不明点やご要望がございましたら、お気軽にお知らせください。"
+        }
+    ];
 
 
 
@@ -76,7 +124,7 @@ const Index = (props) => {
                             <div className={style.mvname}>外壁洗浄専門店 エイト</div>
                         </div>
                         <div className={style.logo}>
-                            <img src={mvtx1} alt="javascript" className={style.mvtx1}/>
+                            {/* <img src={mvtx1} alt="javascript" className={style.mvtx1}/> */}
                             <img src={logo} alt="javascript" />
                         </div>
                     </div>
@@ -98,7 +146,7 @@ const Index = (props) => {
 
                 <div className={style.feature01}>
                     <div className={style.ab_home_1}><img src={home1} alt="home" /></div>
-                    <div className={style.title_en}><img src={tx1} alt="EXTERIOR WALL CLEANING" /></div>
+                    {/* <div className={style.title_en}><img src={tx1} alt="EXTERIOR WALL CLEANING" /></div> */}
                     <div className={style.contentWrap}>
                         <div className={style.title_jp}>外壁洗浄<span>とは</span></div>
                         <div className={style.grid_2}>
@@ -116,9 +164,12 @@ const Index = (props) => {
                 <div className={style.feature02}>
                     <div className={style.ab_home_2}><img src={home2} alt="home" /></div>
                     <div className={style.ab_home_3}><img src={home3} alt="home" /></div>
-                    <div className={style.title_en}><img src={tx2} alt="EXTERIOR CLEANING" /></div>
+                    {/* <div className={style.title_en}><img src={tx2} alt="EXTERIOR CLEANING" /></div> */}
                     <div className={style.contentWrap}>
-                        <div className={style.title_jp}>エクステリア洗浄<span>とは</span></div>
+                        <div className={style.titleWrap}>
+                            <div className={style.title_en}>Exterior Cleaning</div>
+                            <div className={style.title_jp}>エクステリア洗浄とは</div>
+                        </div>
                         <div className={style.grid_2}>
                             
                             <div className={style.grid_txtArea}>
@@ -134,27 +185,27 @@ const Index = (props) => {
                 <div className={style.merit}>
                     <div className={style.contentWrap}>
                         <div className={style.titleWrap}>
-                            <div className={style.title_en}><img src={tx3} alt="MERIT" /></div>
+                            <div className={style.title_en}>Merit</div>
                             <div className={style.title_jp}>エイトの外壁洗浄</div>
                         </div>
                         <div className={style.grid_auto}>
                             
-                            <div className={style.grid_item}>
+                            <div className={style.featureCard}>
                                 <div className={style.grid_imgArea}><img src={merit1} alt="merit1" /></div>
                                 <div className={style.sub_title}>カビ、コケ、各種菌を除去</div>
                                 <div>外壁を傷めないように優しい手洗い洗浄を行いながら、除菌・殺菌効果も兼ね備えています。これにより、カビやコケ、各種菌をしっかりと除去し、清潔な外壁を保ちます。</div>
                             </div>
-                            <div className={style.grid_item}>
+                            <div className={style.featureCard}>
                                 <div className={style.grid_imgArea}><img src={merit2} alt="merit2" /></div>
                                 <div className={style.sub_title}>塗装より圧倒的に安い</div>
                                 <div>塗装に比べて圧倒的にコストが抑えられます。高額な塗装を諦める前に、まずは洗浄サービスをお試しください。</div>
                             </div>
-                            <div className={style.grid_item}>
+                            <div className={style.featureCard}>
                                 <div className={style.grid_imgArea}><img src={merit3} alt="merit3" /></div>
                                 <div className={style.sub_title}>足場不要</div>
                                 <div>通常の塗装工事と異なり、、足場を組む必要がありません。これにより、作業時間と費用の両方を節約することができます。</div>
                             </div>
-                            <div className={style.grid_item}>
+                            <div className={style.featureCard}>
                                 <div className={style.grid_imgArea}><img src={merit5} alt="merit5" /></div>
                                 <div className={style.sub_title}>騒⾳/⾶散がない</div>
                                 <div>⾼圧洗浄機を使⽤しないため近隣への⾶散や騒⾳の⼼配はありません。</div>
@@ -167,8 +218,8 @@ const Index = (props) => {
                 <div className={style.price}>
                     <div className={style.contentWrap}>
                         <div className={style.titleWrap}>
-                            <div><img src={tx8} alt="ABOUT" /></div>
-                            <div className={style.title_jp}>料金</div>
+                            <div className={style.title_en}>Price</div>
+                            <div className={style.title_jp}>料金例</div>
                         </div>
                         <div className={style.price_title}>外壁洗浄</div>
                         <div className={style.grid_2}>
@@ -207,7 +258,7 @@ const Index = (props) => {
                 <div className={style.bf}>
                     <div className={style.contentWrap}>
                         <div className={style.titleWrap}>
-                            <div className={style.title_en}><img src={tx4} alt="BEFOREAFTER" /></div>
+                            <div className={style.title_en}>Before & After</div>
                             <div className={style.title_jp}>施工事例</div>
                         </div>
                         <div className={style.bfSlide}>
@@ -238,144 +289,111 @@ const Index = (props) => {
                     </div>
                 </div>
 
-                <div className={style.cv}>
+                <section className={style.flow}>
                     <div className={style.contentWrap}>
-                        <div className={style.grid_2}>
-                            <div className={style.grid_txtArea}>
+                        <div className={style.titleWrap}>
+                            <div className={style.title_en}>FLOW</div>
+                            <div className={style.title_jp}>施工の流れ</div>
+                        </div>
+                        <div className={style.flowTimeline}>
+                            {flowSteps.map((item, index) => (
+                                <React.Fragment key={index}>
+                                    <div className={style.flowCard}>
+                                        <div className={style.flowCardInner}>
+                                            <div className={style.flowIconZone}>
+                                                <div className={style.flowIconWrapper}>
+                                                    <img src={item.icon} alt={`${item.title}のアイコン`} />
+                                                </div>
+                                            </div>
+                                            <div className={style.flowTextZone}>
+                                                <h3 className={style.flowStepHeader}>
+                                                    <span className={style.flowStepNum}>{item.step}</span>
+                                                    <span className={style.flowStepTitle}>{item.title}</span>
+                                                </h3>
+                                                <p className={style.flowStepDesc}>{item.desc}</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    {index < flowSteps.length - 1 && (
+                                        <div className={style.flowArrowZone}>
+                                            <FontAwesomeIcon icon={faChevronDown} className={style.flowArrowIcon} />
+                                        </div>
+                                    )}
+                                </React.Fragment>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section className={style.cv}>
+                    <div className={style.contentWrap}>
+                        <div className={style.title_en}>FREE</div>
+                        <div className={style.gridArea}>                    
+                            <div className={style.grid_img}>
+                                <img src={free} alt="無料" />
+                            </div>
+                            <div className={style.grid_txt}>
                                 <div className={style.titleWrap}>
-                                    <div className={style.title_en}><img src={tx5} alt="FREE" /></div>
-                                    <div className={style.sub_title}>まずはお試し！<br/>無料の外壁洗浄テスト実施中！</div>
+                                    <div className={style.title_jp}>まずはお試し！<br/><span>無料の外壁洗浄テスト実施中！</span></div>
+                                    
                                 </div>
-                                <div><StaticImage src="../images/wash/p3.png" alt="free" placeholder="blurred" quality ={90} /></div>
                                 <p>「どれくらいキレイになるの？」というお客様の声にお応えして、無料の外壁洗浄テスト（約１㎡・１５分程）を実施中です。安心してご検討いただける「キレイ体験」、ぜひお試しください！</p>
-                            </div>
-                            <div className={style.flow}>
-                                <div className={style.flow_title}>施工の流れ</div>
-                                <div className={style.flow_content}>
-                                    <div className={style.flow_step_wrap}>
-                                        <div className={style.flow_step}><div className={style.flow_step_icon}><p>STEP 1</p></div></div>
-                                        <p className={style.flow_step_title}>お問い合わせ（写真診断あり）</p>
+                                <div className={style.contactBox}>
+                                    <div className={style.contactPhoneZone}>
+                                        <a href="tel:0551-30-9062" className={style.phoneLink}>
+                                            <FontAwesomeIcon icon={faPhone} className={style.phoneIcon} />
+                                            <span className={style.phoneNumber}>0551-30-9062</span>
+                                        </a>
+                                        <p className={style.businessHours}>受付時間: 08:30-17:30</p>
                                     </div>
-                                    <div>お試し洗浄、お見積もり無料で行います！まずはお気軽にお問い合わせください。</div>
-                                    <div className={style.ctaWrap}>
-                                        <div className={`${style.hdr_btn} ${style.btn_line}`}><a href="https://lin.ee/hcoA4qn" target="_blank"><FontAwesomeIcon icon={faLine} size="1x"/><span> LINE</span></a></div>
-                                        <div className={`${style.hdr_btn} ${style.btn_phone}`}><a href="tel:070-3815-0008" target="_blank"><FontAwesomeIcon icon={faPhone} size="1x"/><span> 電話</span></a></div>
-                                        {/* <div className={`${style.hdr_btn} ${style.btn_mail}`}><Link to="/contact" className={`${(location.pathname == "/contact/" ? style.selected : '')}`}><FontAwesomeIcon icon={faEnvelope} size="1x"/><span> メール</span></Link></div> */}
+        
+                                    <div className={style.contactMailZone}>
+                                        <Link to="/contact/" className={style.mailButton}>
+                                            <FontAwesomeIcon icon={faEnvelope} className={style.mailIcon} />
+                                            <span>お問い合わせ</span>
+                                        </Link>
+                                        <Link to="https://lin.ee/hcoA4qn" target="_blank" className={`${style.drawerSnsBtn} ${style.snsLine}`}>
+                                            <FontAwesomeIcon icon={faLine} />
+                                            <span>LINE</span>
+                                        </Link>
                                     </div>
-                                    <div className={style.flow_step_wrap}>
-                                        <div className={style.flow_step}><div className={style.flow_step_icon}><p>STEP 2</p></div></div>
-                                        <p className={style.flow_step_title}>現地調査・お試し施工（1㎡程度）</p>
-                                    </div>
-                                    <div>現地にお伺いし、外壁の状況を調査します。お試し施工を行い、汚れがドコまで落ちるか体験していただけます。</div>
-                                    <div className={style.flow_step_wrap}>
-                                        <div className={style.flow_step}><div className={style.flow_step_icon}><p>STEP 3</p></div></div>
-                                        <p className={style.flow_step_title}>見積書発行・ご契約</p>
-                                    </div>
-                                    <div>お見積内容にご納得いただけましたらご契約後、施工日を確定いたします。</div>
-                                    <div className={style.flow_step_wrap}>
-                                        <div className={style.flow_step}><div className={style.flow_step_icon}><p>STEP 4</p></div></div>
-                                        <p className={style.flow_step_title}>施工、完了確認</p>
-                                    </div>
-                                    <div>施工スタッフがお伺いし、丁寧に施工実施いたします。作業完了後、完了確認をしていただいてご請求となります。作業完了後も万が一問題があれば迅速に対応させていただきますので、ご不明点やご要望がございましたら、お気軽にお知らせください。</div>
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
-                </div>
+                </section>
 
-                {/* <div className={style.about}>
-                    <div className={style.contentWrap}>
-                        <div className={style.titleWrap}>
-                            <div><img src={tx6} alt="ABOUT" /></div>
-                            <div className={style.title_jp}>会社概要</div>
-                        </div>
-                        <div className={style.grid_outline}>
-                            <div className={style.grid_item}><p>事業名</p><p>外壁洗浄専門店　エイト</p></div>
-                            <div className={style.grid_item}><p>代表者</p><p>饗場 秀樹</p></div>
-                            <div className={style.grid_item}><p>設立</p><p>2025年◯月◯日</p></div>
-                            <div className={style.grid_item}><p>事業内容</p><p>外壁洗浄・エクステリア洗浄店舗やアパート・マンションの定期洗浄</p></div>
-                            <div className={style.grid_item}><p>会社住所</p><p>山梨県〇〇〇〇〇〇〇〇〇〇〇〇〇〇</p></div>
-                            <div className={style.grid_item}><p>電話番号</p><p>000-0000-0000</p></div>                            
-                            <div className={style.grid_item}><p>営業時間</p><p>09:00-17:00（日・祝日を除く）</p></div>
-                        </div>
-                    </div>
-                </div> */}
+                
 
-                <div className={style.faq}>
-                    <div className={style.contentWrap}>
+                <section className={style.faqSection}>
+                    <div className={style.inner_faq}>
+
                         <div className={style.titleWrap}>
-                            <div className={style.title_en}><img src={tx7} alt="FAQ" /></div>
+                            <div className={style.title_en}>FAQ</div>
                             <div className={style.title_jp}>よくある質問</div>
                         </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>対応可能エリアはどこですか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>ご住所が対応可能エリアか、お気軽にお問い合わせください。また出張無料エリア（山梨県甲府市、甲斐市、昭和町、中央市、韮崎市、笛吹市、南アルプス市）ほかは別途交通費がかかります。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>見積もりは無料ですか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>はい。見積もりごにお断りいただいてもキャンセル料などは発生いたしません。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>見積もりをお願いしたら必ず契約しないといけないのですか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>お見積もりのご依頼だけでは、必ず契約をしなければならないわけではありません。当社では、お客様と双方が納得してから初めて契約を結びます。ご不明な点がございましたら、何でもご相談ください。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>見積もり以外に追加料金が発生することはありますか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>当社では、基本的に追加料金を請求することはございません。作業中に仕様変更や新たな工事が必要となった場合は、必ずお客様にご報告し、ご相談の上でご了承をいただいてから作業を進めています。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>電話やインターネットでの見積もりはできますか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>メール、電話、公式LINEを通じて概算金額をご案内できます。正確なお見積もりは、スタッフが現場にお伺いし、汚れ具合や素材の状況を確認した上でご提供いたします。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>外壁全面ではなく、一面だけでも大丈夫ですか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>はい、外壁の一部分だけの清掃も承ります。お気軽にお問い合わせください。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>洗浄作業にはどれくらいの時間がかかりますか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>洗浄範囲によって異なりますが、作業時間はおおよそ1〜6時間程度です。詳しい時間は無料お見積もりでご案内いたしますので、お気軽にご依頼ください。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>洗浄で汚れはどこまで取れますか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>プロの技術と専用の洗剤、器材を用いて洗浄を行います。ほとんどの汚れは除去できますが、素材に深く入り込んだ汚れや、手の届きにくい箇所の汚れは完全に除去できない場合があります。詳細については、事前のお見積もり時にご説明いたします。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>外壁洗浄するタイミングはいつですか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>新築から5～8年ほど経つと、外壁に黒や緑の汚れが目立ってきます。この段階では防水性能はまだ保たれており、美観だけが損なわれていることが多いため、外壁塗装前のメンテナンスとして洗浄をおすすめします。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>外壁以外の洗浄は可能ですか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>はい、土間コンクリート、玄関タイル、ブロック塀、カーポートなどの洗浄が可能です。その他の場所についてもお気軽にご相談ください。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>換気扇の周りなどの部分的な汚れだけでもいいのですか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>部分的な汚れだけでも対応しております。1㎡から承っておりますのでお気軽にお問合せください。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>作業時の水道代はどうなりますか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>通常、お客様の水道を使用させていただくことになりますので、水道代についてはご負担いただくようお願いしております。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>作業中、在宅は必要ですか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>外壁洗浄は屋外での作業となりますので、お客様が在宅である必要はありません。ただし、お客様が不在の場合に作業を行う際には、事前にお客様のご了承を得てから作業を行います。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>雨の日でも作業はできますか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>雨の日には作業を行うことができますが、天候によっては作業が延期される場合があります。作業が雨で延期になった場合、追加の費用はかかりません。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>洗浄時、隣家などに水は飛び散るか心配です</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>念のために近隣の方へ弊社のスタッフが事前に挨拶へお伺いさせていただきます。また、施工に際しては細心の注意を払い、近隣の皆様にご迷惑がかからないよう心がけてまいります。</p></div>
-                        </div>
-                        <div className={style.grid_faq}>
-                            <div className={style.grid_question}><p className={style.icon}>Q</p><p>施工中は、洗濯物などはどうしたらいいですか？</p></div>
-                            <div className={style.grid_answer}><p className={style.icon}>A</p><p>洗濯物に関しては、施工中は部屋の中に干していただくようお願いしています。水を使用するため、家の中に水が入らないよう、すべての窓を閉めていただくようお願いいたします。万が一飛散があっては困りますので、しばらくの間、少し息苦しく感じるかもしれませんが、ご協力をお願いいたします。</p></div>
-                        </div>
+
+                        <Accordion>
+                            {faqList.map((item, index) => (
+                                <Accordion.Item key={item.key} className={style.item_faq} eventKey={index.toString()}>
+                                    <Accordion.Header>
+                                        <div className={style.q_logo}>Q</div>
+                                        <div className={style.q_title}>{item.q}</div>
+                                    </Accordion.Header>
+                                    <Accordion.Body className={style.q_content}>
+                                        <div className={style.q_logo}>A</div>
+                                        {/* 改行タグが含まれる場合、単純な文字列展開だとタグがエスケープされる場合があります */}
+                                        <div className={style.q_title} dangerouslySetInnerHTML={{ __html: item.a }} />
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            ))}
+                        </Accordion>
                         
                         
                     </div>
-                </div>
+                </section>
 
 
                 {/* <div className={style.cardWrap}>

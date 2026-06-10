@@ -11,6 +11,8 @@ Font
 $baseFont: "Noto Sans JP", sans-serif;
 $enFont: "Roboto", sans-serif;
 
+$wallwashEnFont:"Modak", system-ui;
+
 $baseFontSize: 16;
 @function rem($pixels) {
     @return calc($pixels / $baseFontSize * 1rem);

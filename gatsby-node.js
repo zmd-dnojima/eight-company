@@ -2,6 +2,7 @@ const path = require("path")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
+  
   const result = await graphql(`
     query {
       allMicrocmsBlog {
@@ -12,7 +13,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
-      allMicrocmsTag {
+      allMicrocmsTags {
         nodes {
           id
           name
@@ -21,13 +22,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `);
 
-  // ページネーション追加
+  // 【修正】まず最初にエラーがないかチェックする
+  if (result.errors) {
+    reporter.panicOnBuild(`GraphQLのクエリ実行時にエラーが発生しました。`, result.errors)
+    return
+  }
+
+  // 【修正】データが正しく存在するかチェックする
+  if (!result.data || !result.data.allMicrocmsBlog || !result.data.allMicrocmsBlog.edges) {
+    reporter.warn(`microCMSから記事データが取得できなかったため、ページの生成をスキップします。`)
+    return
+  }
+
   const posts = result.data.allMicrocmsBlog.edges;
+
+  // 1. 記事一覧ページ（ページネーション）追加
   const postsPerPage = 2; // 1ページあたりの記事数
   const numPages = Math.ceil(posts.length / postsPerPage);
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
-      path: i === 0 ? `/blog` : `/blog/${i + 1}`, // 1ページ目は /blog, それ以降は /blog/2...
+      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
       component: path.resolve('./src/templates/blog-list.js'),
       context: {
         limit: postsPerPage,
@@ -37,35 +51,29 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     });
   });
+
   // 2. タグごとのページ生成
-  const tags = result.data.allMicrocmsTag.nodes;
-  tags.forEach(tag => {
-    createPage({
-      path: `/tags/${tag.name}`,
-      component: path.resolve('./src/templates/tag-list.js'),
-      context: {
-        tagId: tag.id,
-        tagName: tag.name,
-      },
+  if (result.data.allMicrocmsTags && result.data.allMicrocmsTags.nodes) {
+    const tags = result.data.allMicrocmsTags.nodes;
+    tags.forEach(tag => {
+      createPage({
+        path: `/tags/${tag.name}`,
+        component: path.resolve('./src/templates/tag-list.js'),
+        context: {
+          tagId: tag.id,
+          tagName: tag.name,
+        },
+      });
     });
-  });
-
-  if (result.errors) {
-    reporter.panicOnBuild(`GraphQLのクエリ実行時にエラーが発生しました。`, result.errors)
-    return
   }
 
-  if (!result.data || !result.data.allMicrocmsBlog || !result.data.allMicrocmsBlog.edges) {
-    reporter.warn(`microCMSから記事データが取得できなかったため、詳細ページの生成をスキップします。`)
-    return
-  }
-
-  const blogEdges = result.data.allMicrocmsBlog.edges
+  // 3. ブログ詳細ページの生成
   const blogTemplate = path.resolve(`./src/templates/single-blog.js`)
 
-  blogEdges.forEach((edge) => {
+  posts.forEach((edge) => {
+    // 【注目】ここの blogId が microCMS側と一致しているかチェックが入ります
     if (!edge.node || !edge.node.blogId) {
-      reporter.warn(`blogId が設定されていない記事があるため、該当ページの生成をスキップしました。`)
+      reporter.warn(`blogId が設定されていない記事があるため、詳細ページの生成をスキップしました。`)
       return
     }
 

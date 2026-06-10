@@ -67,6 +67,16 @@
     
   }
 
+  h2 {
+      font-size: 24px;
+      background: $base-color;
+      color: #fff;
+      padding: 0.4rem 0.6rem;
+      @media(max-width: $break-s) { 
+          font-size: 20px;
+      }
+  }
+
   // 中央寄せコンテナ
 .servicePointContainer {
   width: 100%;

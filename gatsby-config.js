@@ -76,6 +76,9 @@ module.exports = {
           {
             endpoint: 'blog', // microCMSで作ったエンドポイント名
           },
+          {
+            endpoint: 'tags', // microCMSで作ったエンドポイント名
+          },
         ],
       },
     },

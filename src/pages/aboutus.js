@@ -51,19 +51,21 @@ const AboutUs = (props) => {
 
                         <div className={style.greetingTextZone}>
                             <p className={style.greetingParagraph}>
-                                当社は２０２１年エクステリアエイトとして創業し、２０２５年株式会社エイトカンパニーに改名したまだまだ浅い会社です。外構工事の確かな技術と経験をもとに、お客様の理想の庭（外構）造りをお手伝いしております。
+                                株式会社エイトカンパニー代表の饗場です。<br/>
+                                私は外構工事の職人として長年現場に立ち、さまざまな工事に携わってきました。現場で経験を重ねる中で感じたのは、家の外観は印象や暮らしやすさを大きく左右する大切な仕事だということです。
                             </p>
                             <p className={style.greetingParagraph}>
-                                「デザイナーはお客様。当社はスパイス（アドバイス）を添えるだけ。」
+                                当社では「まあこれくらいでいいか」という仕事はせず、一つ一つの工事に真剣に向き合ってます。また、私自身が現場を理解している職人だからこそ、机上の計画ではなく実際に使いやすく長持ちする外構づくりを心がけています。
+
                             </p>
                             <p className={style.greetingParagraph}>
-                                一緒に”理想の庭・外構”を作っていきます。もちろんデザインも承ります。<br />
-                                代表自身職人として現場に立ち、設計から施工まで一貫対応いたします。<br />
-                                まるで顔馴染みの職人に直接頼むような感覚でお気軽にお問合せ下さい。
+                                「１０年後もお客様が笑顔でいつづけられる」をテーマに「エイトカンパニーに頼んでよかった」そう思っていただける仕事をこれからも続けていきたいと考えています。<br/>
+                                
                             </p>
                             <p className={style.greetingParagraph}>
-                                造るだけではなくお家の美観を保つ為に外壁・エクステリアクリーニングのサービスも行っております。株式会社エイトカンパニーはこれからも地域に根差して誠実に心を込めてお客様の毎日が１％でも豊かになれるそんな会社を目指しております。
+                                外構工事や外周りのメンテナンスをご検討の際は、ぜひお気軽にご相談ください。
                             </p>
+                            
                             
                             {/* 署名エリア */}
                             <div className={style.signatureZone}>
@@ -89,10 +91,10 @@ const AboutUs = (props) => {
                                 <dd className={style.companyDetail}>饗場 秀樹</dd>
                             </div>
 
-                            <div className={style.companyRow}>
+                            {/* <div className={style.companyRow}>
                                 <dt className={style.companyItem}>資本金</dt>
                                 <dd className={style.companyDetail}>◯◯◯,◯◯◯円</dd>
-                            </div>
+                            </div> */}
 
                             <div className={style.companyRow}>
                                 <dt className={style.companyItem}>会社所在地</dt>
@@ -106,7 +108,7 @@ const AboutUs = (props) => {
 
                             <div className={style.companyRow}>
                                 <dt className={style.companyItem}>定休日</dt>
-                                <dd className={style.companyDetail}>◯曜日</dd>
+                                <dd className={style.companyDetail}>不定休（ご予約にてご来店ください）</dd>
                             </div>
 
                             <div className={style.companyRow}>

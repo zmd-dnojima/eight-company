@@ -33,6 +33,39 @@
     padding: 4rem 1rem 4rem 1rem;
 }
 
+//CVボタン
+.morebutton {
+    position: relative;
+    font-family: $enFont;
+    color: $base-color;
+    font-size: rem(12);
+    letter-spacing: 0.16rem;
+    padding: 2rem 0;
+    a {
+        transition: all 0.3s;
+    }
+    a:hover {
+        opacity: 0.5;
+    }
+    span {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        margin-left: 1rem;
+        background: $base-color;
+        border-radius: 100%;
+        svg {
+            display: block;
+            color: #fff;
+            text-align: center;
+            margin: 0 auto;
+            padding-top: 18px;
+            
+        }
+    }   
+}
 
 //その他ボタン
 .backButton,
@@ -251,9 +284,6 @@
   .nav {
     display: none;
   }
-  .contentWrap {
-    padding: 0 1rem;
-  }
   .hdr_btn span {
     display: none;
   }
@@ -317,6 +347,8 @@
         border: 1px solid #333;
         color: #333;
     }
+
+    
 
     .infoT {
         display: inline-block;
@@ -448,42 +480,76 @@
 
     // 右側：メールボタン
     .contactMailZone {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    }
-
-    .mailButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: linear-gradient(135deg, #2ea7e0 0%, #35518f 100%);
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 14px 0;
-    width: 80%; // ボックス内でのボタンの幅
-    border-radius: 6px; // 丸角カプセル型
-    box-shadow: 0 4px 10px rgba(26, 37, 116, 0.2);
-    transition: background-color 0.2s, transform 0.2s;
-    
-    &:hover {
-        background-color: #2433a3;
-        transform: translateY(-1px);
-    }
-    
-    @media (max-width: 768px) {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
         width: 100%;
-    }
+
+
+         .mailButton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2ea7e0 0%, #35518f 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 14px 0;
+            width: 80%; // ボックス内でのボタンの幅
+            border-radius: 6px; // 丸角カプセル型
+            box-shadow: 0 4px 10px rgba(26, 37, 116, 0.2);
+            transition: background-color 0.2s, transform 0.2s;
+            
+            
+            &:hover {
+                background-color: #2433a3;
+                transform: translateY(-1px);
+            }
+            
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+        }
+
+        .mailIcon {
+            font-size: 16px;
+        }
+
+
+        .snsLine {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #06C755;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 14px 0;
+            width: 80%; // ボックス内でのボタンの幅
+            border-radius: 6px; // 丸角カプセル型
+            box-shadow: 0 4px 10px rgba(26, 37, 116, 0.2);
+            transition: background-color 0.2s, transform 0.2s;
+            border: 0px;
+            
+            &:hover {
+                background-color: #06C755;
+                transform: translateY(-1px);
+            }
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+            
+        }
     }
 
-    .mailIcon {
-    font-size: 16px;
-    }
+   
 
     .bannerZone {
         width: 100%;
@@ -633,7 +699,7 @@
         &.active {
             color: $active-color;
             font-weight: 600;
-            background: lighten($active-color, 42%);
+            background: transparent;
         }
     }
         
@@ -702,6 +768,8 @@
         border: 1px solid #fff;
         color: #fff;
     }
+
+    
 }
 
 ////////////////////////////////////////////////////////

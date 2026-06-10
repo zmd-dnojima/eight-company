@@ -102,12 +102,12 @@
   letter-spacing: 0.03em;
 
   // 「デザイナーはお客様〜」の強調フック
-  &:nth-child(2) {
-    font-weight: bold;
-    color: #1a2574; // トーンを合わせたネイビー
-    font-size: 16px;
-    margin: 32px 0;
-  }
+  // &:nth-child(2) {
+  //   font-weight: bold;
+  //   color: #1a2574; // トーンを合わせたネイビー
+  //   font-size: 16px;
+  //   margin: 32px 0;
+  // }
 
   @media (max-width: $break-s) {
     font-size: 14px;

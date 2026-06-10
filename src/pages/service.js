@@ -29,6 +29,7 @@ import s2 from "../images/service/p2.jpg"
 import s3 from "../images/service/p3.jpg"
 import s4 from "../images/service/p4.jpg"
 import s5 from "../images/service/p5.jpg"
+import s6 from "../images/service/p6.jpg"
 import area from "../images/service/area.jpg"
 import f1 from "../images/service/flow1.svg"
 import f2 from "../images/service/flow2.svg"
@@ -44,12 +45,12 @@ const Service = (props) => {
         {
             img:s1,
             title: "外構工事／エクステリア工事の設計施工一式",
-            desc: "新築外構一式／駐輪場（土間コンクリート）／カーポート／ガレージ／物置設置／ブロック／フェンス工／門柱／門扉／石貼り／アプローチ／階段／ウッドデッキ／テラス／人工芝／ロックガーデン／基礎工事 etc"
+            desc: "新築外構一式／駐輪場（土間コンクリート）／カーポート／ガレージ／物置設置／ブロック／フェンス工／門柱／門扉／石貼り／アプローチ／階段／ウッドデッキ／テラス／人工芝／ロックガーデン／基礎工事"
         },
         {
             img:s2,
             title: "外構／庭園リガーデン・修繕工事",
-            desc: "駐輪場の拡張／植木伐採・伐根／エクステリア商品の交換・修繕／段差解消／バリアフリー化／老朽化ブロック塀撤去／庭の撤去 etc"
+            desc: "駐輪場の拡張／植木伐採・伐根／エクステリア商品の交換・修繕／段差解消／バリアフリー化／老朽化ブロック塀撤去／庭の撤去"
         },
         {
             img:s3,
@@ -59,12 +60,17 @@ const Service = (props) => {
         {
             img:s4,
             title: "造園工事",
-            desc: "植木の植栽／花壇作成／客土入れ／砂利敷／ロックガーデン／石貼り／植木のお手入れ／伐採・伐根 etc"
+            desc: "植木の植栽／花壇作成／客土入れ／砂利敷／ロックガーデン／石貼り"
         },
         {
             img:s5,
+            title: "お庭の管理",
+            desc: "熟練の植木職人による植木剪定・伐採・草刈り・草むしり・お掃除"
+        },
+        {
+            img:s6,
             title: "外構洗浄（外壁洗浄専門店エイト）",
-            desc: "外構、建物の外壁等の汚れを専用の機械でキレイにします。外壁の汚れ（コケ・カビ等）除去／コンクリートの黒ずみ／アプローチ／タイル／ブロック／エクステリア商品 etc。塗装ではなく洗浄でキレイにするためコストを抑えながら見た目を改善し、資産価値アップができます。"
+            desc: "外構、エクステリア商品、建物の外壁、窓ガラス等の汚れを素材に合わせた道具で洗浄。外のまわりを総合的にキレイにし美観を保ち資産価値アップができます。"
         }
     ];
 
@@ -128,17 +134,25 @@ const Service = (props) => {
                         {/* 5つのサービスリストのループ */}
                         <div className={style.serviceGridList}>
                             {services.map((item, index) => (
-                                <div key={index} className={style.serviceRow}>
-                                    {/* 左側：写真エリア */}
-                                    <div className={style.serviceImageZone}>
-                                        <img src={item.img} alt={item.title} />
+                                <React.Fragment key={index}>
+                                    {/* インデックスが2（3番目の要素）の直前に見出しを表示 */}
+                                    {index === 0 && (
+                                        <h2>工事部</h2>
+                                    )}
+                                    {index === 4 && (
+                                        <h2>メンテナンス部</h2>
+                                    )}
+
+                                    <div className={style.serviceRow}>
+                                        <div className={style.serviceImageZone}>
+                                            <img src={item.img} alt={item.title} />
+                                        </div>
+                                        <div className={style.serviceTextZone}>
+                                            <h3 className={style.serviceItemTitle}>{item.title}</h3>
+                                            <p className={style.serviceItemDesc}>{item.desc}</p>
+                                        </div>
                                     </div>
-                                    {/* 右側：テキストエリア */}
-                                    <div className={style.serviceTextZone}>
-                                        <h3 className={style.serviceItemTitle}>{item.title}</h3>
-                                        <p className={style.serviceItemDesc}>{item.desc}</p>
-                                    </div>
-                                </div>
+                                </React.Fragment>
                             ))}
                         </div>
 
@@ -169,7 +183,8 @@ const Service = (props) => {
                                 甲府市、富士吉田市、都留市、山梨市、大月市、韮崎市、南アルプス市、
                                 北杜市、甲斐市、笛吹市、上野原市、甲州市、中央市、市川三郷町、早川町、
                                 身延町、南部町、富士川町、昭和町、西桂町、道志村、忍野村、山中湖村、
-                                鳴沢村、富士河口湖町、小菅村、丹波山村。
+                                鳴沢村、富士河口湖町。<br/>
+                                上記以外の地域につきましても、柔軟に対応いたしますのでお気軽にご相談ください。
                             </p>
                         </div>
 
