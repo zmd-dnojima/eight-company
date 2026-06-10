@@ -14,6 +14,47 @@ const SingleBlog = (props) => {
     const siteUrl = useLocation().href;
     const slug = useLocation().search;
 
+    // ==========================================================================
+    // 【プレビュー用の処理追加】
+    // ==========================================================================
+    // 1. 最初はGatsbyがビルドしたデータを初期値にする
+    const [blog, setBlog] = useState(props.data.microcmsBlog)
+
+    useEffect(() => {
+        // URLのパラメータ（?previewKey=xxxx）を取得
+        const searchParams = new URLSearchParams(window.location.search)
+        const previewKey = searchParams.get("previewKey")
+
+        // previewKey がある場合（microCMSの画面プレビューから来た時）だけ実行
+        if (previewKey && blog && blog.blogId) {
+            // microCMSのAPIから直接「下書きデータ」をフェッチ
+            // ※「あなたのサービスID」と「あなたのAPIキー」はご自身の環境に合わせて書き換えてください
+            fetch(
+                `https://eightcompany.microcms.io/api/v1/blog/${blog.blogId}?draftKey=${previewKey}`,
+                {
+                    headers: {
+                        "X-MICROCMS-API-KEY": "JAacUj2wNeGxPP0s8LpnXImw8YqtmngM3z0J",
+                    },
+                }
+            )
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("プレビューデータの取得に失敗しました");
+                }
+                return res.json();
+            })
+            .then((data) => {
+                // 2. 取得した下書きデータで画面の表示（state）を塗り替える
+                setBlog(data)
+            })
+            .catch((err) => console.error(err))
+        }
+    }, [blog?.blogId])
+    // ==========================================================================
+
+    // もしデータがない場合の安全対策
+    if (!blog) return null;
+
     return(
       <Layout>
             <Seo title={props.data.microcmsBlog.title} description={props.data.microcmsBlog.title} /> 
