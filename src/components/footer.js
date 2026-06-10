@@ -33,9 +33,9 @@ const Footer = ({ isShortMode }) => {
                         <p className={style.contactDesc}>お気軽にお問い合わせください</p>
                         <div className={style.contactBox}>
                             <div className={style.contactPhoneZone}>
-                                <a href="tel:070-3815-0008" className={style.phoneLink}>
+                                <a href="tel:0551-30-9062" className={style.phoneLink}>
                                     <FontAwesomeIcon icon={faPhone} className={style.phoneIcon} />
-                                    <span className={style.phoneNumber}>070-3815-0008</span>
+                                    <span className={style.phoneNumber}>0551-30-9062</span>
                                 </a>
                                 <p className={style.businessHours}>受付時間: 08:30-17:30</p>
                             </div>
@@ -44,6 +44,10 @@ const Footer = ({ isShortMode }) => {
                                 <Link to="/contact/" className={style.mailButton}>
                                     <FontAwesomeIcon icon={faEnvelope} className={style.mailIcon} />
                                     <span>お問い合わせ</span>
+                                </Link>
+                                <Link to="https://lin.ee/hcoA4qn" target="_blank" className={`${style.drawerSnsBtn} ${style.snsLine}`}>
+                                    <FontAwesomeIcon icon={faLine} />
+                                    <span>LINE</span>
                                 </Link>
                             </div>
                         </div>

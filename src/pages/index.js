@@ -46,12 +46,34 @@ import person2 from "../images/pw_2.png"
 import person3 from "../images/pw_3.png"
 import person4 from "../images/pw_4.png"
 
-const worryText = "お悩み";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("Asia/Tokyo");
+const worryText = "お悩み";
 
+const faqList = [
+    {
+        key: "1",
+        q: "外構・庭のデザインから施工までお願いできますか？",
+        a: "はい、すべてお任せください。 ヒアリング → デザイン提案（パース・図面） → お見積もり → 施工 → アフターメンテナンスまで、一貫して対応しております。 お客様のご予算や好みに合わせて柔軟にプランをご提案します。"
+    },
+    {
+        key: "2",
+        q: "対応エリアはどこまでですか？",
+        a: "主に山梨県全域に対応しております。 甲府市、富士吉田市、都留市、山梨市、大月市、韮崎市、南アルプス市、北杜市、甲斐市、笛吹市、上野原市、甲州市、中央市、市川三郷町、早川町、身延町、南部町、富士川町、昭和町、西桂町、道志村、忍野村、山中湖村、鳴沢村、富士河口湖町。<br/>上記以外の地域につきましても、柔軟に対応いたしますのでお気軽にご相談ください。"
+    },
+    {
+        key: "3",
+        q: "見積もりは無料ですか？",
+        a: "はい、完全無料です！ 現地調査とお見積もりは一切費用をいただきません。 庭の写真や図面だけでの簡易見積もりも可能ですので、まずはお気軽にご相談ください。 「予算がどれくらいかかるか知りたい」という方も大歓迎です。"
+    },
+    {
+        key: "4",
+        q: "外構工事はどれくらいかかりますか？",
+        a: "土地の広さやエクステリア商品の有無等お客様のご要望に応じて価格が変わりますので、まずはお気軽にご相談ください。詳細なお見積りをお作りします。"
+    }
+];
 const Index = (props) => {
     const location = useLocation()
     const rootPath = `${__PATH_PREFIX__}/`
@@ -69,8 +91,10 @@ const Index = (props) => {
 
                 <section className={style.mainVisual}>
                     <div className={style.txtWrap}>
-                        <div className={style.txtArea}>世代を超えて<br/>家族の笑顔が続く外構に</div>
-                    </div>
+                        <div className={style.txtArea}>
+                            <span>世代を超えて<br/>家族の笑顔が続く外構に</span>
+                            山梨の外構・エクステリア専門店
+                        </div>                    </div>
                 </section>
 
 
@@ -131,19 +155,19 @@ const Index = (props) => {
                     <div className={style.featureCard}>
                     <p className={style.featureStars}>★★★★★</p>
                     <h3 className={style.featureTitle}>施工実績</h3>
-                    <p className={style.featureText}>創業５年、10年後も笑顔でいられる外構づくりをモットーに。豊富な知識と高品質施工でリピート多数。</p>
+                    <p className={style.featureText}>職人歴14年累計200件以上工事実績。10年後も笑顔でいられる外構づくりをモットーに。豊富な知識と高品質でリピート多数。</p>
                     </div>
 
                     <div className={style.featureCard}>
                     <p className={style.featureStars}>★★★★★</p>
                     <h3 className={style.featureTitle}>適正価格×高品質施工</h3>
-                    <p className={style.featureText}>中間マージンがないことにより高いコスパを実現。代表自ら現場を管理、品質をチェック。</p>
+                    <p className={style.featureText}>設計から施工まで自社で対応。無駄な中間コストを抑えながら代表自ら現場を管理し品質をチェック。</p>
                     </div>
 
                     <div className={style.featureCard}>
                     <p className={style.featureStars}>★★★★★</p>
                     <h3 className={style.featureTitle}>エクステリアプランナー</h3>
-                    <p className={style.featureText}>お客様の目線に立ちデザイン、使いやすさ、生活導線、メンテナンス性まで考慮。10年後も笑顔でいられる為に。</p>
+                    <p className={style.featureText}>現場を知る代表だからできる提案。使いやすさ、生活導線、メンテナンス性まで考慮。10年後も笑顔でいられる為に。</p>
                     </div>
 
                     <div className={style.featureCard}>
@@ -160,7 +184,7 @@ const Index = (props) => {
 
                     <div className={style.featureCard}>
                     <p className={style.featureStars}>★★★★★</p>
-                    <h3 className={style.featureTitle}>外構＋外壁洗浄のトータル対応</h3>
+                    <h3 className={style.featureTitle}>外構+メンテナンスのトータル対応</h3>
                     <p className={style.featureText}>外構工事だけでなく、住まい全体を綺麗に保つお手伝いが可能。</p>
                     </div>
 
@@ -186,8 +210,9 @@ const Index = (props) => {
                 <div className={`${style.worriesRow} ${style.worriesRowRight}`}>
                     <div className={style.worriesContent}>
                     <div className={style.worriesBubbles}>
-                    <p className={style.worriesBubble}>新築したけど外構をどう進めればいいのかわからない</p>
+                    <p className={style.worriesBubble}>家を建てたけど外構はドコに頼めばいいのか分からない</p>
                     <p className={style.worriesBubble}>駐車しやすく使いやすい外構にしたい</p>
+                    <p className={style.worriesBubble}>予算内で理想の外構ができるか不安</p>
                     </div>
                     <img src={person1} alt="" className={style.worriesPerson} />
                     </div>
@@ -198,8 +223,8 @@ const Index = (props) => {
                     <div className={style.worriesContent}>
                     <img src={person2} alt="" className={style.worriesPerson} />
                     <div className={style.worriesBubbles}>
-                    <p className={style.worriesBubble}>何にお金をかければいいのか迷っている</p>
                     <p className={style.worriesBubble}>外からの視線が気になるダサくはしたくないけど、やりすぎも避けたい</p>
+                    <p className={style.worriesBubble}>家に合う落ち着いた外構にしたい</p>
                     </div>
                     </div>
                 </div>
@@ -208,8 +233,8 @@ const Index = (props) => {
                 <div className={`${style.worriesRow} ${style.worriesRowRight}`}>
                     <div className={style.worriesContent}>
                     <div className={style.worriesBubbles}>
-                    <p className={style.worriesBubble}>家に合う落ち着いた外構にしたい</p>
                     <p className={style.worriesBubble}>子どもが免許取得し駐車スペースが足りなくなった</p>
+                    <p className={style.worriesBubble}>雑草やメンテナンスの手間を減らしたい</p>
                     </div>
                     <img src={person3} alt="" className={style.worriesPerson} />
                     </div>
@@ -222,6 +247,7 @@ const Index = (props) => {
                     <div className={style.worriesBubbles}>
                     <p className={style.worriesBubble}>住んでから「こうしておけばよかった」と後悔したくない</p>
                     <p className={style.worriesBubble}>相談できず、いわれるがままに進んでしまった</p>
+                    <p className={style.worriesBubble}>こんな小さな仕事でも対応してくれるかな</p>
                     </div>
                     </div>
                 </div>
@@ -229,8 +255,7 @@ const Index = (props) => {
                 {/* 締めコピー */}
                 <div className={style.worriesClosing}>
                     <p>
-                    株式会社エイトカンパニーは<br />
-                    <span className={style.worriesClosingAccent}>暮らしやすさまで考えた外構提案を大切にしています。</span>
+                    <span className={style.worriesClosingAccent}>その悩みエイトカンパニーが解決します！</span>
                     </p>
                 </div>
             
@@ -275,48 +300,19 @@ const Index = (props) => {
                             <div className={style.tjp}>よくある質問</div>
                         </div>
                         <Accordion>
-                            <Accordion.Item  className={style.item_faq} eventKey="0">
-                                <Accordion.Header>
-                                    <div className={style.q_logo}>Q</div>
-                                    <div className={style.q_title}>造園工事の費用はどれくらいかかりますか？</div>
-                                </Accordion.Header>
-                                <Accordion.Body className={style.q_content}>
-                                    <div className={style.q_logo}>A</div>
-                                    <div className={style.q_title}>庭の広さや内容によって大きく異なりますが、目安として小さな庭のリフォーム：20万円〜、中庭の造園：50万円〜150万円、広い庭や新築外構：200万円〜となります。現地調査を無料で行っていますので、まずはお気軽にご相談ください。詳細なお見積もりをお作りします。(※レンタル用品をご利用の際は備え付けのアルコールスプレーにて十分に消毒をされた上でご利用ください。)手ぶらでお気軽にご来店ください。</div>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item  className={style.item_faq} eventKey="1">
-                                <Accordion.Header>
-                                    <div className={style.q_logo}>Q</div>
-                                    <div className={style.q_title}>庭のデザインから施工までお願いできますか？</div>
-                                </Accordion.Header>
-                                <Accordion.Body className={style.q_content}>
-                                    <div className={style.q_logo}>A</div>
-                                    <div className={style.q_title}>はい、すべてお任せください。 ヒアリング → デザイン提案（パース・図面） → お見積もり → 施工 → アフターメンテナンスまで、一貫して対応しております。 お客様のご予算や好みに合わせて柔軟にプランをご提案します。</div>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item  className={style.item_faq} eventKey="2">
-                                <Accordion.Header>
-                                    <div className={style.q_logo}>Q</div>
-                                    <div className={style.q_title}>対応エリアはどこまでですか？</div>
-                                </Accordion.Header>
-                                <Accordion.Body className={style.q_content}>
-                                    <div className={style.q_logo}>A</div>
-                                    <div className={style.q_title}>主に山梨県全域に対応しております。 甲府市、富士吉田市、都留市、山梨市、大月市、韮崎市、南アルプス市、北杜市、甲斐市、笛吹市、上野原市、甲州市、中央市、市川三郷町、早川町、身延町、南部町、富士川町、昭和町、西桂町、道志村、忍野村、山中湖村、鳴沢村、富士河口湖町、小菅村、丹波山村。</div>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item  className={style.item_faq} eventKey="3">
-                                <Accordion.Header>
-                                    <div className={style.q_logo}>Q</div>
-                                    <div className={style.q_title}>見積もりは無料ですか？</div>
-                                </Accordion.Header>
-                                <Accordion.Body className={style.q_content}>
-                                    <div className={style.q_logo}>A</div>
-                                    <div className={style.q_title}>はい、完全無料です！ 現地調査とお見積もりは一切費用をいただきません。 庭の写真や図面だけでの簡易見積もりも可能ですので、まずはお気軽にご相談ください。 「予算がどれくらいかかるか知りたい」という方も大歓迎です。</div>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            
-                        
+                            {faqList.map((item) => (
+                                <Accordion.Item key={item.key} className={style.item_faq} eventKey={item.key}>
+                                    <Accordion.Header>
+                                        <div className={style.q_logo}>Q</div>
+                                        <div className={style.q_title}>{item.q}</div>
+                                    </Accordion.Header>
+                                    <Accordion.Body className={style.q_content}>
+                                        <div className={style.q_logo}>A</div>
+                                        {/* 改行タグが含まれる場合、単純な文字列展開だとタグがエスケープされる場合があります */}
+                                        <div className={style.q_title} dangerouslySetInnerHTML={{ __html: item.a }} />
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            ))}
                         </Accordion>
                     </div>
                 </section>

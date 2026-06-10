@@ -18,16 +18,21 @@ const SingleBlog = (props) => {
       <Layout>
             <Seo title={props.data.microcmsBlog.title} description={props.data.microcmsBlog.title} /> 
             <div className={style.subHeader}>
-                <p>{props.data.microcmsBlog.title}</p>   
+                
             </div>
-            <div className={style.contentWrap}>
+            {props.data.microcmsBlog.thumbnail && (
+            <div className={style.mainThumbnail}>
+                {/* CSSでトリミングするので、<img>タグはそのまま */}
+                <img src={props.data.microcmsBlog.thumbnail.url} alt={props.data.microcmsBlog.title} />
+            </div>
+            )}
             <div className={style.singlePage}>
                 <div className={style.subContent}>
-                    {/* <div className={style.blogDate}>{`${props.data.microcmsArticles.eventDate.substring(0, props.data.microcmsArticles.eventDate.indexOf("T"))}`}</div> */}
+                    <h1 className={style.title}>{props.data.microcmsBlog.title}</h1>   
+                    <div className={style.blogDate}>{`${props.data.microcmsBlog.date.substring(0, props.data.microcmsBlog.date.indexOf("T"))}`}</div>
                     <div className={style.contentInner} dangerouslySetInnerHTML={{ __html: props.data.microcmsBlog.content }} />  
-                    {/* <div className={style.backButton}><Link to={"../articles/"}>新着情報一覧へ</Link></div> */}
+                    <div className={style.backButton}><Link to={"../../articles/"}>新着情報一覧へ</Link></div>
                 </div>
-            </div>
             </div>
         </Layout>                    
     )

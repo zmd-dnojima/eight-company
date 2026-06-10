@@ -61,7 +61,12 @@ const Blog = (props) => {
                     {/* タグボタンエリア */}
                     <div className={style.tagFilter}>
                         {allTags.map(tag => (
-                            <button key={tag} onClick={() => { setSelectedTag(tag); setCurrentPage(1); }}>
+                            <button 
+                                key={tag} 
+                                onClick={() => { setSelectedTag(tag); setCurrentPage(1); }}
+                                // 現在選択されているタグと一致したら style.active を付与
+                                className={selectedTag === tag ? style.active : ""}
+                            >
                                 {tag}
                             </button>
                         ))}
@@ -80,7 +85,7 @@ const Blog = (props) => {
                                         <div className={style.blogTxtArea}>
                                             <div className={style.blogTitle}>{novel.node.title}</div>
                                             <div className={style.blogDate}>{dayjs(novel.node.date).tz().format("YYYY年MM月DD日")}</div>
-                                            <div className={style.blogContent}>{getShortText(novel.node.content, 10)}</div>
+                                            <div className={style.blogContent}>{getShortText(novel.node.content, 30)}</div>
                                         </div>
                                     </div>
                                 </Link>
