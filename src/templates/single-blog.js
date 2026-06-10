@@ -22,31 +22,33 @@ const SingleBlog = (props) => {
     const [blog, setBlog] = useState(props.data.microcmsBlog)
 
     useEffect(() => {
-        // URLのパラメータ（?previewKey=xxxx）を取得
+        if (typeof window === "undefined") return;
+
+        // 1. URLのパラメータ（?previewKey=xxxx）を取得
         const searchParams = new URLSearchParams(window.location.search)
         const previewKey = searchParams.get("previewKey")
 
-        // 🔍 【原因調査用】いまプログラムが認識している値を出力してみる
+        // 💡【修正】URLのパス（/blog/j41-ie5skyfs）から、直接記事のIDを引っこ抜く
+        // window.location.pathname は「/blog/j41-ie5skyfs」を返します
+        const pathSegments = window.location.pathname.split('/')
+        const actualBlogId = pathSegments[pathSegments.length - 1] || blog?.blogId;
+
         console.log("--- プレビューデバッグ ---");
         console.log("previewKey (合言葉):", previewKey);
         console.log("blogオブジェクト全体:", blog);
-        console.log("blogId (記事のID):", blog?.blogId);
+        console.log("判別した記事のID (blogId):", actualBlogId);
 
-        // previewKey がある場合（microCMSの画面プレビューから来た時）だけ実行
-        if (previewKey && blog && blog.blogId) {
-            const fetchUrl = `https://eightcompany.microcms.io/api/v1/blog/${blog.blogId}?draftKey=${previewKey}`;
+        // previewKey と 記事のID が両方揃っている場合だけ実行
+        if (previewKey && actualBlogId) {
+            const fetchUrl = `https://eightcompany.microcms.io/api/v1/blog/${actualBlogId}?draftKey=${previewKey}`;
             console.log("実際に叩きにいくURL:", fetchUrl);
 
-            fetch(
-                `https://eightcompany.microcms.io/api/v1/blog/${blog.blogId}?draftKey=${previewKey}`,
-                {
-                    headers: {
-                        "X-MICROCMS-API-KEY": "JAacUj2wNeGxPP0s8LpnXImw8YqtmngM3z0J",
-                    },
-                }
-            )
+            fetch(fetchUrl, {
+                headers: {
+                    "X-MICROCMS-API-KEY": "JAacUj2wNeGxPP0s8LpnXImw8YqtmngM3z0J",
+                },
+            })
             .then((res) => {
-                // 🔍 【原因調査用】microCMSからどんな返事が来たかステータスコードをログに出す
                 console.log("microCMSからのレスポンス状態(status):", res.status); 
                 if (!res.ok) {
                     throw new Error(`サーバーエラー: ステータスコード ${res.status}`);
@@ -55,11 +57,11 @@ const SingleBlog = (props) => {
             })
             .then((data) => {
                 console.log("無事に取得できた下書きデータ:", data);
-                setBlog(data)
+                setBlog(data) // 画面を書き換える
             })
             .catch((err) => console.error("エラーが発生しました:", err))
-        }else{
-            console.log("条件（previewKey, blog, blogId）のどれかが揃わなかったため、fetchされませんでした。");
+        } else {
+            console.log("条件（previewKey または 記事のID）が揃わなかったため、fetchされませんでした。");
         }
     }, [blog?.blogId])
     // ==========================================================================
