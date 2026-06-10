@@ -26,10 +26,17 @@ const SingleBlog = (props) => {
         const searchParams = new URLSearchParams(window.location.search)
         const previewKey = searchParams.get("previewKey")
 
+        // 🔍 【原因調査用】いまプログラムが認識している値を出力してみる
+        console.log("--- プレビューデバッグ ---");
+        console.log("previewKey (合言葉):", previewKey);
+        console.log("blogオブジェクト全体:", blog);
+        console.log("blogId (記事のID):", blog?.blogId);
+
         // previewKey がある場合（microCMSの画面プレビューから来た時）だけ実行
         if (previewKey && blog && blog.blogId) {
-            // microCMSのAPIから直接「下書きデータ」をフェッチ
-            // ※「あなたのサービスID」と「あなたのAPIキー」はご自身の環境に合わせて書き換えてください
+            const fetchUrl = `https://eightcompany.microcms.io/api/v1/blog/${blog.blogId}?draftKey=${previewKey}`;
+            console.log("実際に叩きにいくURL:", fetchUrl);
+
             fetch(
                 `https://eightcompany.microcms.io/api/v1/blog/${blog.blogId}?draftKey=${previewKey}`,
                 {
@@ -39,16 +46,20 @@ const SingleBlog = (props) => {
                 }
             )
             .then((res) => {
+                // 🔍 【原因調査用】microCMSからどんな返事が来たかステータスコードをログに出す
+                console.log("microCMSからのレスポンス状態(status):", res.status); 
                 if (!res.ok) {
-                    throw new Error("プレビューデータの取得に失敗しました");
+                    throw new Error(`サーバーエラー: ステータスコード ${res.status}`);
                 }
                 return res.json();
             })
             .then((data) => {
-                // 2. 取得した下書きデータで画面の表示（state）を塗り替える
+                console.log("無事に取得できた下書きデータ:", data);
                 setBlog(data)
             })
-            .catch((err) => console.error(err))
+            .catch((err) => console.error("エラーが発生しました:", err))
+        }else{
+            console.log("条件（previewKey, blog, blogId）のどれかが揃わなかったため、fetchされませんでした。");
         }
     }, [blog?.blogId])
     // ==========================================================================
