@@ -155,7 +155,7 @@ const Index = (props) => {
                     <div className={style.featureCard}>
                     <p className={style.featureStars}>★★★★★</p>
                     <h3 className={style.featureTitle}>施工実績</h3>
-                    <p className={style.featureText}>職人歴14年累計200件以上工事実績。10年後も笑顔でいられる外構づくりをモットーに。豊富な知識と高品質でリピート多数。</p>
+                    <p className={style.featureText}>職人歴14年累計200件以上工事実績。『世代を超えて家族の笑顔が続く住まいに』をモットーに、豊富な知識と高品質でリピート多数。</p>
                     </div>
 
                     <div className={style.featureCard}>
@@ -167,7 +167,7 @@ const Index = (props) => {
                     <div className={style.featureCard}>
                     <p className={style.featureStars}>★★★★★</p>
                     <h3 className={style.featureTitle}>エクステリアプランナー</h3>
-                    <p className={style.featureText}>現場を知る代表だからできる提案。使いやすさ、生活導線、メンテナンス性まで考慮。10年後も笑顔でいられる為に。</p>
+                    <p className={style.featureText}>現場を知る代表だからできる提案。使いやすさ、生活導線、メンテナンス性まで考慮。世代を超えて家族が笑顔でいつづけられる為に。</p>
                     </div>
 
                     <div className={style.featureCard}>

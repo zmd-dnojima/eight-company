@@ -59,7 +59,7 @@ const AboutUs = (props) => {
 
                             </p>
                             <p className={style.greetingParagraph}>
-                                「１０年後もお客様が笑顔でいつづけられる」をテーマに「エイトカンパニーに頼んでよかった」そう思っていただける仕事をこれからも続けていきたいと考えています。<br/>
+                                「世代を超えて家族の笑顔が続く住まいに」をテーマに「エイトカンパニーに頼んでよかった」そう思っていただける仕事をこれからも続けていきたいと考えています。<br/>
                                 
                             </p>
                             <p className={style.greetingParagraph}>
