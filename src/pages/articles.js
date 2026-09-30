@@ -17,7 +17,7 @@ const Blog = (props) => {
     // 状態管理
     const [selectedTag, setSelectedTag] = useState("すべて");
     const [currentPage, setCurrentPage] = useState(1);
-    const postsPerPage = 2;
+    const postsPerPage = 10;
 
     // データ加工（重複を防ぎ、フィルタリングとページネーションを統合）
     const { filteredPosts, pageCount, allTags } = useMemo(() => {

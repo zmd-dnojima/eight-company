@@ -117,7 +117,7 @@ const Index = (props) => {
                         {/* tagをworks、記事数を4つに絞る */}
                         {(() => {
                             const allBlog = [];
-                            const showBlogNum = 4;
+                            const showBlogNum = 3;
                             var blogAddNum = 0;
                             
                             for(var i in props.data.allMicrocmsBlog.edges){
