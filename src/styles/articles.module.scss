@@ -5,45 +5,13 @@
 ////////////////////////////////////////////////
 // 共通
 
-
-
 .subVisual {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1200 / 300; 
-    @media (max-width: $break-s) {
-      aspect-ratio: 1200 / 700; 
-    }
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/news-hero.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    .txtWrap {
-        height: 100%;
-        width: 100%;
-        padding: 2rem;
-        max-width: 1280px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        .txtArea {
-            
-            color: #fff;
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: 4px;
-            text-shadow: 0 0 6px rgb(0, 0, 0, 0.6);
-            line-height: 1rem;
-            span {
-              display: block;
-              font-size: 14px;
-            }
-        }
-    }
 }
 
-////////////////////////////////////////////////
 
 .blogCard {
   border-top: 1px solid #f3f3f3;

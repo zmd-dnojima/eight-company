@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: "私たちについて", to: "/aboutus" },
   { label: "事業内容", to: "/service" },
   { label: "お知らせ＆施工事例", to: "/articles" },
+  { label: "セカンドオピニオン", to: "/secondopinion" },
   { label: "外壁洗浄専門店エイト", to: "/wallwash" },
 ];
 

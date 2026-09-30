@@ -17,11 +17,13 @@ import { faLine } from "@fortawesome/free-brands-svg-icons"
 import { color } from 'framer-motion'
 
 import logo from "../images/logo.svg";
+import logomark from "../images/logomark.svg";
 
 const NAV_LINKS = [
   { label: "私たちについて", to: "/aboutus" },
   { label: "事業内容", to: "/service" },
   { label: "お知らせ＆施工事例", to: "/articles" },
+  { label: "セカンドオピニオン", to: "/secondopinion" },
   { label: "外壁洗浄専門店エイト", to: "/wallwash" },
 ];
 
@@ -33,41 +35,54 @@ const Header = () => {
   return (
 
     <header className={style.headerWrapper}>
-      <div className={style.contentWrap}>
+      <div className={style.upperArea}>
  
-        <div className={style.logo}><Link to="/"><img src={logo} alt="株式会社エイトカンパニー ロゴ" className={style.logoMark} /></Link></div>
- 
-        <nav className={style.nav}>
-          {NAV_LINKS.map(({ label, to, extraClass }) => (
-            <Link
-              key={to}
-              to={to}
-              className={`
-                ${style.navLink} 
-                ${location.pathname.startsWith(to) ? style.active : ""}
-                ${extraClass || ""} 
-              `}
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
+        
  
         <div className={style.ctaWrap}>
-          <Link
-            to="/contact"
-            className={`${style.hdr_btn} ${style.btn_mail} ${
-              location.pathname === "/contact" || location.pathname === "/contact/"
-                ? style.selected
-                : ""
-            }`}
-          >
-            <FontAwesomeIcon icon={faEnvelope} size="1x" />
-            <span>お問い合わせ</span>
-          </Link>
+          <div className={style.logo}><Link to="/">
+            <img src={logomark} alt="株式会社エイトカンパニー ロゴ" className={style.logo1} />
+            <img src={logo} alt="株式会社エイトカンパニー ロゴ" className={style.logo2} />
+          </Link></div>
+          <div className={style.hdrLeftArea}>
+            <div className={style.contactPhoneZone}>
+              <a href="tel:0551-30-9062" className={style.phoneLink}>
+                  <FontAwesomeIcon icon={faPhone} className={style.phoneIcon} />
+                  <span className={style.phoneNumber}>0551-30-9062</span>
+              </a>
+              <p className={style.businessHours}>受付時間: 08:30-17:30</p>
+            </div>
+            <Link
+              to="/contact"
+              className={`${style.hdr_btn} ${style.btn_mail} ${
+                location.pathname === "/contact" || location.pathname === "/contact/"
+                  ? style.selected
+                  : ""
+              }`}
+            >
+              <FontAwesomeIcon icon={faEnvelope} size="1x" />
+              <span>お問い合わせ</span>
+            </Link>
+          </div>
+          
         </div>
- 
       </div>
+
+      <nav className={style.nav}>
+        {NAV_LINKS.map(({ label, to, extraClass }) => (
+          <Link
+            key={to}
+            to={to}
+            className={`
+              ${style.navLink} 
+              ${location.pathname.startsWith(to) ? style.active : ""}
+              ${extraClass || ""} 
+            `}
+          >
+            {label}
+          </Link>
+        ))}
+      </nav>
     </header>
     
   );

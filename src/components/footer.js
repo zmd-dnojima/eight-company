@@ -21,11 +21,7 @@ const Footer = ({ isShortMode }) => {
 
             {!isShortMode && (
                 <div>
-                <div className={style.bannerZone}>
-                    <Link to="/wallwash/" className={style.bannerLink}>
-                        <img src={bnr} alt="塗装よりも安く早く外壁をキレイに 外壁洗浄専門店エイト" />
-                    </Link>
-                </div>
+                
                 <section className={style.contactSection}>
                     <div className={style.contactInner}>
                         <p className={style.contactSub}>CONTACT</p>
@@ -53,6 +49,11 @@ const Footer = ({ isShortMode }) => {
                         </div>
                     </div>
                 </section>
+                <div className={style.bannerZone}>
+                    <Link to="/wallwash/" className={style.bannerLink}>
+                        <img src={bnr} alt="塗装よりも安く早く外壁をキレイに 外壁洗浄専門店エイト" />
+                    </Link>
+                </div>
                 </div>
             )}
 

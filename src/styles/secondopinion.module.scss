@@ -1,0 +1,914 @@
+@import './variables.scss';
+@import './all.scss';
+@import './common.module.scss';
+
+.subVisual {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/secondopinion/hero.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+// ── 導入セクション ──────────────────────────────
+.introSection {
+  padding: 2rem 1.4rem 4rem;
+  box-sizing: border-box;
+}
+ 
+.introContainer {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+ 
+  @media (max-width: $break-s) {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+ 
+.introText {
+  flex: 1.3;
+  @media (max-width: $break-s) {
+    order: 2;
+    
+  }
+}
+ 
+.introImage {
+  flex: 1;
+  max-width: 320px;
+  width: 100%;
+ 
+  @media (max-width: $break-s) {
+    order: 1;
+    max-width: 240px;
+  }
+}
+ 
+.introHeading {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+ 
+.introHighlight {
+  font-size: 24px;
+  color: $base2-color;
+  text-decoration: none;
+  background-image: linear-gradient(to right, $base2-color 6px, transparent 6px);
+  background-size: 12px 2px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+ 
+.introSubheading {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+ 
+.introParagraph {
+  
+  line-height: 1.9;
+  color: #333333;
+  margin: 0 0 16px;
+}
+ 
+.introNote {
+  
+  color: $base2-color;
+  margin: 0 0 20px;
+}
+ 
+// お問い合わせボタン（共通）
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: $base2-color;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+ 
+  &:hover {
+    opacity: 0.85;
+  }
+}
+ 
+// ── 5つのポイント ──────────────────────────────
+.pointsSection {
+  background-color: #f4f6f8;
+  padding: 4rem 1.4rem;
+  box-sizing: border-box;
+  border-top: 1px dotted $base2-color;
+  border-bottom: 1px dotted $base2-color;
+}
+ 
+.pointsContainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+ 
+.pointsHeading {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 2rem;
+  line-height: 1.6;
+  
+}
+ 
+.pointsCountWrap {
+  display: block;
+  color: $base2-color;
+}
+ 
+.pointsCount {
+  position: relative;
+  display: inline-block;
+  font-family: $enFont;
+  font-weight: 900;
+  font-size: 62px;
+  line-height: 1;
+  color: #fff; // 塗りの水色
+  -webkit-text-stroke: 2px $base2-color; // アウトライン（濃いブルー）
+  text-stroke: 2px $base2-color;
+  text-shadow: 4px 4px 0 #8fb3dd; // 右下にずれた影レイヤー
+  margin-right: 2px;
+}
+ 
+.pointsIntro {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #333333;
+  margin: 0 0 2.5rem;
+}
+ 
+.pointsList {
+  list-style: none;
+  margin: 0 0 3rem;
+  padding: 0;
+}
+ 
+.pointItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 10px;
+  border-bottom: 1px solid #dcdcdc;
+ 
+  @media (max-width: $break-s) {
+    flex-wrap: wrap;
+    gap: 8px 20px;
+  }
+}
+ 
+.pointNumber {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: $base2-color;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.pointTitle {
+  flex-shrink: 0;
+  width: 180px;
+  font-weight: 700;
+  color: $base2-color;
+  font-size: 15px;
+ 
+  @media (max-width: $break-s) {
+    width: 100%;
+  }
+}
+ 
+.pointDesc {
+  font-size: 14px;
+  color: #333333;
+  line-height: 1.7;
+}
+ 
+// 下向き三角矢印
+.pointsArrow {
+  width: 0;
+  height: 0;
+  margin: 0 auto 2.5rem;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 18px solid $base2-color;
+}
+ 
+.pointsClosing {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  
+  line-height: 1.9;
+  margin: 0;
+  span {
+    color: $base2-color;
+  }
+ 
+  @media (max-width: $break-s) {
+    font-size: 14px;
+  }
+}
+ 
+// ── フル幅写真 ──────────────────────────────
+.fullWidthPhoto {
+  background-image: url('../images/secondopinion/p2.jpg') ;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1200 / 300; 
+    margin: 0 auto;
+    @media (max-width: $break-s) {
+      aspect-ratio: 1200 / 700; 
+    }
+}
+ 
+// ── 比較セクション ──────────────────────────────
+.compareSection {
+  padding: 5rem 1.4rem;
+  box-sizing: border-box;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+ 
+.compareHeading {
+  text-align: center;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.8;
+  padding: 20px 0;
+  margin: 0 0 3.5rem;
+  border-top: 2px solid $base2-color;
+  border-bottom: 2px solid $base2-color;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+ 
+  span {
+    color: $base2-color;
+  }
+}
+ 
+.compareBlock {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 4rem;
+ 
+  > * {
+    width: 100%;
+  }
+}
+ 
+.compareLabel {
+  flex-shrink: 0;
+  width: 180px;
+  aspect-ratio: 1 / 1;
+  background-color: $base2-color;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  box-sizing: border-box;
+
+  @media (max-width: $break-s) {
+    width: 100%; // 100%のままだと画面幅=正方形の一辺になり大きすぎるため、固定値に変更
+    aspect-ratio: auto;
+  }
+}
+ 
+.compareLabelNo {
+  font-family: $enFont;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  opacity: 0.8;
+  @media (max-width: $break-s) {
+    margin-bottom: 0px;
+  }
+}
+ 
+.compareLabelTitle {
+  font-size: 18px;
+  font-weight: 700;
+}
+ 
+.compareText {
+  flex: 1;
+  min-width: 260px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #333333;
+  align-self: center;
+  span {
+    color: $base2-color;
+    font-weight: 500;
+  }
+}
+ 
+// COMPARE1: 価格面カード
+.priceCards {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+ 
+  @media (max-width: $break-s) {
+    flex-direction: column;
+  }
+}
+ 
+.priceCard {
+  flex: 1;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 24px 20px;
+  box-sizing: border-box;
+}
+ 
+.priceCardHighlight {
+  background-color: #fff;
+  border: 2px solid $base2-color;
+}
+ 
+.priceCardHead {
+  text-align: center;
+  margin-bottom: 16px;
+  
+}
+ 
+.priceCardName {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+ 
+  .priceCardHighlight & {
+    color: $base2-color;
+  }
+}
+ 
+.priceCardSub {
+  font-size: 12px;
+  color: #777777;
+  margin: 4px 0 0;
+}
+ 
+.priceCardMargin {
+  background-color: #fff;
+  border-radius: 4px;
+  text-align: center;
+  padding: 14px 10px;
+  margin-bottom: 20px;
+ 
+  .priceCardHighlight & {
+    background-color: #eef4fc;
+  }
+}
+ 
+.marginLabel {
+  font-size: 12px;
+  color: #777777;
+  margin: 0 0 4px;
+}
+ 
+.marginValue {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+  color: #333333;
+ 
+  .priceCardHighlight & {
+    color: $base2-color;
+  }
+}
+ 
+.priceCardList {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+ 
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: #333333;
+    background: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    .priceCardHighlight & {
+      color: $base2-color;
+      background: rgba($color: $base2-color, $alpha: 0.1);
+    }
+  }
+}
+ 
+.iconCheck {
+  color: $base2-color;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+ 
+.iconCross {
+  color: #999999;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+ 
+// 発注の流れ
+.flowDiagram {
+  margin: 2rem 0;
+}
+ 
+.flowCaption {
+  font-size: 12px;
+  color: #777777;
+  margin: 0 0 10px;
+}
+ 
+.flowIcons {
+  display: flex;
+  align-items: flex-start;
+  // justify-content: space-between;
+  // gap: 4px;
+}
+ 
+.flowStep {
+  flex: 1; // 全ステップを均等幅にする
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  position: relative;
+
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 18px; // アイコン円（36px）の縦中央
+    right: 0; // 隣のステップとの境界線上
+    transform: translate(50%, -50%); // 境界のちょうど真ん中に来るよう自身を半分ズラす
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid #c3c3c3;
+  }
+}
+ 
+.flowIconCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border: 1px solid #666666;
+  .priceCardHighlight & {
+    border: 1px solid $base2-color;
+    img {
+      color: $base2-color;
+    }
+    
+  }
+  img {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+}
+.cb3 {
+  .flowDiagram {
+    margin: 4rem 0;
+  }
+  .flowIconCircle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border: 1px solid #666666;
+    img {
+      padding: 20px;
+    }
+    @media (max-width: $break-s) {
+      width: 40px;
+      height: 40px;
+      img {
+        padding: 10px;
+      }
+    }
+  }
+  .flowStep {
+    &:not(:last-child)::after {
+      top: 40px;
+      @media (max-width: $break-s) {
+        top: 20px;
+      }
+    }
+  }
+
+}
+
+ 
+.flowLabel {
+  font-size: 10px;
+  color: #555555;
+  line-height: 1.3;
+}
+ 
+// COMPARE2: 図面プレースホルダー
+.placeholderBox {
+  width: 100%;
+  min-height: 260px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+ 
+// POINTボックス（COMPARE3・4共通）
+.pointBox {
+  width: auto;
+  border: 2px solid $red-color;
+  border-radius: 4px;
+  text-align: center;
+  padding: 32px 40px 20px;
+  position: relative;
+  margin: 0 auto;
+ 
+  p {
+    font-size: 18px;
+    font-weight: 700;
+    color: $red-color;
+    margin: 0;
+  }
+}
+ 
+.pointBoxLabel {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $red-color;
+  color: #fff;
+  font-size: 12px;
+  font-family: $enFont;
+  letter-spacing: 0.08em;
+  padding: 4px 20px;
+  border-radius: 999px;
+}
+ 
+// COMPARE4: 予算カード
+.budgetCards {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  margin: 4rem 0;
+  @media (max-width: $break-s) {
+    flex-direction: column;
+  }
+}
+ 
+.budgetCard {
+  flex: 1;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+ 
+.budgetCardHighlight {
+  background-color: $base2-color;
+}
+ 
+.budgetCardName {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+ 
+  .budgetCardHighlight & {
+    color: #fff;
+  }
+}
+ 
+.budgetCardSub {
+  font-size: 11px;
+  color: #777777;
+  margin: 2px 0 12px;
+ 
+  .budgetCardHighlight & {
+    color: #cfe0f5;
+  }
+}
+ 
+.budgetCardValueWrap {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 12px 10px;
+}
+ 
+.budgetLabel {
+  font-size: 11px;
+  color: #777777;
+  margin: 0 0 4px;
+}
+ 
+.budgetValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+ 
+  .budgetCardHighlight & {
+    color: $base2-color;
+  }
+}
+ 
+// ── 事例集 ──────────────────────────────
+.caseSection {
+  background-color: #f4f6f8;
+  padding: 4rem 1.4rem;
+  box-sizing: border-box;
+}
+ 
+.caseHeading {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 20px 0;
+  margin: 0 auto 3rem;
+  border-top: 3px solid $base2-color;
+  border-bottom: 3px solid $base2-color;
+  max-width: 400px;
+}
+ 
+.caseCard {
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+ 
+.caseCardHead {
+  background-color: $base2-color;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+ 
+  p {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+  }
+ 
+  @media (max-width: $break-s) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+ 
+.casePill {
+  flex-shrink: 0;
+  background-color: #fff;
+  color: $base2-color;
+  font-size: 12px;
+  font-family: $enFont;
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 999px;
+}
+ 
+.caseCardBody {
+  padding: 24px;
+}
+ 
+.caseRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+
+  @media (max-width: $break-s) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #333333;
+    margin: 0;
+  }
+}
+ 
+.caseIcon {
+  flex-shrink: 0;
+  font-size: 20px;
+  color: $base2-color;
+  margin-top: 2px;
+}
+ 
+.caseIconFlip {
+  transform: scaleX(-1);
+}
+ 
+.caseAnswerBox {
+  border: 1px solid $red-color;
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+ 
+  p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #333333;
+    margin: 0;
+    span {
+      color: $red-color;
+    }
+  }
+}
+ 
+.caseAnswerLabel {
+  color: $red-color !important;
+  font-weight: 700;
+  font-size: 13px;
+  margin: 0 0 8px !important;
+  img {
+    width: 25px;
+    height: auto;
+    margin-bottom: 6px;
+  }
+}
+ 
+.caseResultBox {
+  position: relative;
+  background-color: #dbe7f5;
+  border-radius: 4px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+ 
+  p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #333333;
+    margin: 0;
+    flex: 1;
+  }
+
+  img {
+    width: 20px;
+    height: auto;
+  }
+  @media (max-width: $break-s) {
+    .caseResultBoxImgLeft {
+      position: absolute;
+      left: -5%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .caseResultBoxImgRight {
+      position: absolute;
+      right: -5%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  
+}
+ 
+// ── CTA ──────────────────────────────
+.ctaSection {
+  background-color: $base2-color;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  padding: 4rem 1.4rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+ 
+.ctaKicker {
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  margin: 0 0 12px;
+}
+ 
+.ctaHeading {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 2rem;
+ 
+  @media (max-width: $break-s) {
+    font-size: 15px;
+  }
+}
+ 
+.ctaBox {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: stretch;
+ 
+  @media (max-width: $break-s) {
+    flex-direction: column;
+  }
+}
+ 
+.ctaPhone {
+  flex: 1;
+  padding: 20px;
+  border-right: 1px solid #e0e0e0;
+ 
+  @media (max-width: $break-s) {
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+  }
+}
+ 
+.ctaPhoneNumber {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0d1b4c;
+  margin: 0 0 4px;
+}
+ 
+.ctaHours {
+  font-size: 12px;
+  color: #777777;
+  margin: 0;
+}
+ 
+.ctaContactButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #0d1b4c;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 4px 4px 0;
+  transition: opacity 0.2s;
+ 
+  &:hover {
+    opacity: 0.85;
+  }
+ 
+  @media (max-width: $break-s) {
+    border-radius: 0 0 4px 4px;
+    padding: 16px;
+  }
+}
+ 
