@@ -146,7 +146,24 @@ const Index = (props) => {
                 </div></section>
                 
 
-
+                <section className={style.secondOpinion}>
+                    <Link to="/secondopinion/" className={style.soBanner}>
+                        <span className={style.soNew}>NEW</span>
+                        <div className={style.soImg}>
+                            <StaticImage src="../images/bnr1.jpg" alt="secondOpinion" className={style.soImgInner} objectFit="cover"/>
+                        </div>
+                        <div className={style.soBody}>
+                            <div className={style.soEn}>SECOND OPINION SERVICE</div>
+                            <div className={style.soTitle}>
+                                ハウスメーカー等で<br />外構をご検討中の皆様へ
+                            </div>
+                            <span className={style.soButton}>
+                                セカンドオピニオンページへ
+                                <FontAwesomeIcon icon={faChevronRight} className={style.soIcon} />
+                            </span>
+                        </div>
+                    </Link>
+                </section>
 
               
                 <section className={style.featuresSection}>
